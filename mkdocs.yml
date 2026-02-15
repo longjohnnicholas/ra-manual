@@ -1,0 +1,45 @@
+site_name: RA Manual
+site_description: A guide for research assistants on using AI in research workflows
+site_url: https://ntsivanidis.github.io/ra-manual/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Setup: 01-setup.md
+  - Why Claude Code?: 02-why-claude-code.md
+  - Core Workflow: 03-workflow.md
+  - Code Principles: 04-code-principles.md
+  - Resources: 05-resources.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
