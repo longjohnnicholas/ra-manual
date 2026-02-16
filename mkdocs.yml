@@ -1,6 +1,6 @@
 site_name: RA Manual
 site_description: A guide for research assistants on using AI in research workflows
-site_url: https://ntsivanidis.github.io/ra-manual/
+site_url: https://longjohnnicholas.github.io/ra-manual/
 
 theme:
   name: material
@@ -27,7 +27,7 @@ theme:
 nav:
   - Home: index.md
   - Setup: 01-setup.md
-  - Why Claude Code?: 02-why-claude-code.md
+  - Why AI Coding Tools?: 02-why-claude-code.md
   - Core Workflow: 03-workflow.md
   - Code Principles: 04-code-principles.md
   - Resources: 05-resources.md
