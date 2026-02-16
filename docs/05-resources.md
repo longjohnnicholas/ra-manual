@@ -17,10 +17,6 @@ These are repositories and tools built by economists, for economists.
 
 - [Pedro Sant'Anna's Claude Code Workflow](https://psantanna.com/claude-code-my-workflow/) — comprehensive starter kit for academics using Claude Code with LaTeX/Beamer, R, and Quarto. Features 10 specialized review agents, 19 slash commands, pipeline conversion (Beamer→Quarto, TikZ→SVG), and quality gates. Extracted from a PhD economics course at Emory (6 lectures, 800+ slides). [GitHub repo](https://github.com/pedrohcgs/claude-code-my-workflow).
 
-- [Scott Cunningham's MixtapeTools](https://github.com/scunning1975/MixtapeTools) — tools for coding, teaching, and presentations with AI assistance, focused on causal inference. By the author of *Causal Inference: The Mixtape*.
-
-- [Stata MCP Server](https://github.com/hanlulong/stata-mcp) — Model Context Protocol server that lets Claude execute Stata commands, run `.do` files, and interpret output directly from VS Code.
-
 ## Compound Engineering
 
 - [Compound Engineering: How Every Codes With Agents](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents) — the article that introduced the compound engineering framework: plan → execute → review → compound.
