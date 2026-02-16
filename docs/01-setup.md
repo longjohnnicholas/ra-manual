@@ -57,7 +57,11 @@ You now have two ways to interact with Claude inside VS Code:
 
 **Side panel**: Click the Claude icon in the left sidebar. This gives you a chat-style interface with visual diffs when Claude edits files.
 
+![Claude Code side panel in VS Code](images/vscode-sidepanel.png)
+
 **Terminal**: Open the integrated terminal and type `claude`. This gives you a text-based interface — faster for quick questions and scripting.
+
+![Claude Code in the VS Code terminal](images/vscode-terminal.png)
 
 Both are equivalent in capability. Use whichever feels more natural.
 

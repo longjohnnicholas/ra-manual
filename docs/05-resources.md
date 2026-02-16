@@ -27,6 +27,7 @@ These are repositories and tools built by economists, for economists.
 
 ## Guides and Tutorials
 
+- [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) — hands-on course covering prompt structure, chain-of-thought reasoning, avoiding hallucinations, and building complex prompts. Available as Jupyter notebooks or Google Sheets.
 - [Claude Code for Scientists](https://www.neuroai.science/p/claude-code-for-scientists) — practical guide by Patrick Mineault on using Claude Code in academic research
 - [Getting Started with Claude Code for Data Scientists](https://www.dataquest.io/blog/getting-started-with-claude-code-for-data-scientists/) — data-focused tutorial with examples
 - [Writing a Good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) — practical guide to crafting effective project context files
@@ -42,6 +43,14 @@ These are repositories and tools built by economists, for economists.
 - [Awesome Claude Skills](https://github.com/travisvn/awesome-claude-skills) — curated list of Claude Code skills across domains
 - [VoltAgent Awesome Agent Skills](https://github.com/VoltAgent/awesome-agent-skills) — 300+ skills for various use cases
 - [Trail of Bits Claude Code Config](https://github.com/trailofbits/claude-code-config) — opinionated defaults, documentation, and workflows
+
+## Voice-to-Text Tools
+
+Speaking is 3x faster than typing (~150 wpm vs ~50 wpm). These tools let you dictate prompts and code comments:
+
+- [Wispr Flow](https://www.wispr.ai/) — AI-powered dictation for Mac. Learns your vocabulary and coding terms. Recommended.
+- [macOS Dictation](https://support.apple.com/guide/mac-help/use-dictation-mh40584/mac) — Built-in, free. Press `Fn Fn` to activate.
+- [Windows Speech Recognition](https://support.microsoft.com/en-us/windows/use-voice-typing-to-talk-instead-of-type-on-your-pc-fec94565-c4bd-329d-e59a-af033fa5689f) — Built-in Windows feature.
 
 ## Quick Reference
 

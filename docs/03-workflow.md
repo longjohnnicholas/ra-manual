@@ -83,6 +83,8 @@ This is the single most important workflow habit. **Never let Claude start codin
 - Command: type `/plan`
 - CLI flag: `claude --permission-mode plan`
 
+![Plan mode indicator in Claude Code](images/plan-mode.png)
+
 **The workflow:**
 
 1. **Explain** what you want in natural language. Be specific about the goal, not the implementation.
