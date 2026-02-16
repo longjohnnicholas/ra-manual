@@ -32,11 +32,11 @@ A practical guide for research assistants on using AI tools.
 
     Markdown files are easy for AI to read and edit. Use them for notes, docs, and task lists. AI works better with markdown than Word or PDFs.
 
--   :material-calendar-check:{ .lg .middle } __Keep a weekly task list__
+-   :material-cog-refresh:{ .lg .middle } __Create skills for repetitive tasks__
 
     ---
 
-    Maintain a markdown file: *This Week* (what you did + links) and *Next Week* (what you're planning). Share with your supervisor before each meeting.
+    When you repeat the same instructions, create a skill (reusable prompt template). Build your personal library over time.
 
 -   :material-sync:{ .lg .middle } __Use compound engineering__
 
@@ -50,11 +50,11 @@ A practical guide for research assistants on using AI tools.
 
     Spawn specialized sub-agents for research, exploration, and parallel tasks. Don't do everything in one thread.
 
--   :material-cog-refresh:{ .lg .middle } __Create skills for repetitive tasks__
+-   :material-calendar-check:{ .lg .middle } __Keep a weekly task list__
 
     ---
 
-    When you repeat the same instructions, create a skill (reusable prompt template). Build your personal library over time.
+    Maintain a markdown file: *This Week* (what you did + links) and *Next Week* (what you're planning). Share with your supervisor before each meeting.
 
 -   :material-book-open-page-variant:{ .lg .middle } __Keep up with best practices__
 
