@@ -15,7 +15,7 @@ These are repositories and tools built by economists, for economists.
 
 - [Awesome Econ AI Stuff](https://github.com/meleantonio/awesome-econ-ai-stuff) — curated collection of AI skills for economics research. Includes skills for panel data analysis (Python), difference-in-differences (R), Stata regressions with publication-ready tables, and publication-quality charts. Works with Claude Code, Cursor, and other AI tools.
 
-- [Pedro Sant'Anna's Claude Code Workflow](https://github.com/pedrohcgs/claude-code-my-workflow) — ready-to-fork Claude Code template for academics using LaTeX/Beamer + R. Features multi-agent review with specialized proofreader, slide-auditor, pedagogy-reviewer, R-reviewer, and TikZ-reviewer agents. Used to produce 6 PhD lecture decks with 800+ slides at Emory.
+- [Pedro Sant'Anna's Claude Code Workflow](https://psantanna.com/claude-code-my-workflow/) — comprehensive starter kit for academics using Claude Code with LaTeX/Beamer, R, and Quarto. Features 10 specialized review agents, 19 slash commands, pipeline conversion (Beamer→Quarto, TikZ→SVG), and quality gates. Extracted from a PhD economics course at Emory (6 lectures, 800+ slides). [GitHub repo](https://github.com/pedrohcgs/claude-code-my-workflow).
 
 - [Scott Cunningham's MixtapeTools](https://github.com/scunning1975/MixtapeTools) — tools for coding, teaching, and presentations with AI assistance, focused on causal inference. By the author of *Causal Inference: The Mixtape*.
 
