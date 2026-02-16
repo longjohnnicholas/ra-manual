@@ -1,8 +1,14 @@
 /* Heading colors - pure black */
-.md-typeset h1,
-.md-typeset h2,
-.md-content h1,
-.md-content h2 {
+:root {
+  --md-typeset-color: #000000;
+}
+
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] .md-typeset h2,
+[data-md-color-scheme="default"] .md-content h1,
+[data-md-color-scheme="default"] .md-content h2,
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] h1 {
   color: #000000 !important;
   font-weight: 700;
 }

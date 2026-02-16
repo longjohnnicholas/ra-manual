@@ -1,6 +1,6 @@
 # Setup
 
-<p style="font-size: 1.1rem; color: #666;">
+<p style="font-size: 1.1rem; color: #000;">
 Install VS Code and Claude Code in about 10 minutes.
 </p>
 
