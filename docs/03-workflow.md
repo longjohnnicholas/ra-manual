@@ -12,6 +12,7 @@ This page covers the tools and practices that make Claude Code powerful: CLAUDE.
 - [Sub-Agents](#sub-agents) — parallel work and code review
 - [Compound Engineering](#compound-engineering) — learning from every session
 - [Working with PDFs](#working-with-pdfs) — minimize token usage
+- [Working with LaTeX and Overleaf](#working-with-latex-and-overleaf) — use Claude Code with Overleaf
 
 ---
 
@@ -269,3 +270,42 @@ This is what separates productive AI-assisted coding from frustrating trial-and-
 
 !!! warning
     Never upload a PDF "just in case" you might need it. Each upload burns through your context budget.
+
+---
+
+## Working with LaTeX and Overleaf
+
+Overleaf is great for collaborative LaTeX editing, but its interface doesn't support AI coding agents. Here's how to get the best of both worlds.
+
+### The workflow
+
+1. **Clone from Overleaf.** Use Overleaf's Git integration to clone your project locally:
+
+    ```bash
+    git clone https://git.overleaf.com/your-project-id my-paper
+    cd my-paper
+    ```
+
+    (Find your Git URL in Overleaf: Menu → Git)
+
+2. **Edit with Claude Code.** Open the folder in VS Code with Claude Code. Now you have full access to skills, sub-agents, and all the features covered in this guide.
+
+3. **Push back to Overleaf.** When done, commit and push:
+
+    ```bash
+    git add . && git commit -m "Revised introduction" && git push
+    ```
+
+    Your changes appear instantly in Overleaf.
+
+### Avoiding conflicts
+
+If multiple co-authors are working simultaneously:
+
+- **Pull before you start.** Always `git pull` before editing.
+- **Communicate.** Let co-authors know when you're doing a heavy editing session.
+- **Commit frequently.** Small commits merge more easily than large ones.
+
+### Why not the Chrome extension?
+
+Claude's browser extension can help with writing, but it can't run specialized skills, use sub-agents, or read your CLAUDE.md for project context. For serious paper drafting, the local Git workflow is worth the setup.
