@@ -12,25 +12,63 @@ A practical guide for research assistants on using AI tools.
 
 ## Key Principles
 
-These are the habits that matter. Read them, internalize them, come back to them.
+<div class="grid cards" markdown>
 
-1. **Always plan first.** Never let AI start coding immediately. Use plan mode to research the codebase, identify the right approach, and write a step-by-step plan for your approval. Planning prevents wasted work.
+-   :material-clipboard-check-outline:{ .lg .middle } __Always plan first__
 
-2. **Mind your model usage.** Default to Sonnet for most tasks—you'll burn through credits fast with Opus. Save Opus for complex reasoning only.
+    ---
 
-3. **Work in markdown.** Markdown files are easy for AI to read, edit, and search. Use them for notes, documentation, task lists, and meeting agendas. AI works better with markdown than Word docs or PDFs.
+    Never let AI start coding immediately. Use plan mode to research, identify the right approach, and write a plan for your approval.
 
-4. **Keep a weekly task list.** Maintain a markdown file with a simple table: *This Week* (what you did, with links to Trello cards or Google Drive files) and *Next Week* (what you're planning). Share it with your supervisor before each meeting. AI can help you update it.
+-   :material-speedometer:{ .lg .middle } __Mind your model usage__
 
-5. **Use compound engineering.** The loop is: *Plan → Work → Assess → Compound*. Break tasks into small pieces, let AI execute step-by-step, then review the results. The crucial step is **compounding**: after each task, ask "what could we have done better?" and write those learnings into your `CLAUDE.md` file or skill. This way the AI learns from past mistakes and gets smarter over time.
+    ---
 
-6. **Use sub-agents liberally.** Spawn specialized sub-agents for research, exploration, and parallel tasks. Don't try to do everything in one conversation thread.
+    Default to Sonnet—you'll burn through credits fast with Opus. Save Opus for complex reasoning only.
 
-7. **Create skills for repetitive tasks.** When you find yourself repeating the same instructions, create a skill (a reusable prompt template). Build your personal library over time.
+-   :material-language-markdown:{ .lg .middle } __Work in markdown__
 
-8. **Keep up with best practices.** AI tools evolve rapidly. Read the [official docs](https://docs.anthropic.com/en/docs/claude-code) regularly. Last month's best practice may be outdated.
+    ---
 
-9. **Use voice-to-text.** You can speak at ~150 wpm but only type ~50 wpm. Use [Wispr Flow](https://www.wispr.ai/) to 3x your input speed.
+    Markdown files are easy for AI to read and edit. Use them for notes, docs, and task lists. AI works better with markdown than Word or PDFs.
+
+-   :material-calendar-check:{ .lg .middle } __Keep a weekly task list__
+
+    ---
+
+    Maintain a markdown file: *This Week* (what you did + links) and *Next Week* (what you're planning). Share with your supervisor before each meeting.
+
+-   :material-sync:{ .lg .middle } __Use compound engineering__
+
+    ---
+
+    *Plan → Work → Assess → Compound.* After each task, ask "what could we do better?" and write learnings to `CLAUDE.md`. The AI gets smarter over time.
+
+-   :material-account-multiple:{ .lg .middle } __Use sub-agents liberally__
+
+    ---
+
+    Spawn specialized sub-agents for research, exploration, and parallel tasks. Don't do everything in one thread.
+
+-   :material-cog-refresh:{ .lg .middle } __Create skills for repetitive tasks__
+
+    ---
+
+    When you repeat the same instructions, create a skill (reusable prompt template). Build your personal library over time.
+
+-   :material-book-open-page-variant:{ .lg .middle } __Keep up with best practices__
+
+    ---
+
+    AI tools evolve rapidly. Read the [official docs](https://docs.anthropic.com/en/docs/claude-code) regularly. Last month's best practice may be outdated.
+
+-   :material-microphone:{ .lg .middle } __Use voice-to-text__
+
+    ---
+
+    Speak at ~150 wpm vs typing ~50 wpm. Use [Wispr Flow](https://www.wispr.ai/) to 3x your input speed.
+
+</div>
 
 ---
 
