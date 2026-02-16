@@ -11,6 +11,7 @@ This page covers the tools and practices that make Claude Code powerful: CLAUDE.
 - [Plan Mode](#plan-mode) — always plan before coding
 - [Sub-Agents](#sub-agents) — parallel work and code review
 - [Compound Engineering](#compound-engineering) — learning from every session
+- [Working with PDFs](#working-with-pdfs) — minimize token usage
 
 ---
 
@@ -239,3 +240,32 @@ Claude might say: *"The merge on firm_id needs to be many-to-one because of the 
 Over weeks and months, your CLAUDE.md becomes an institutional knowledge base. New RAs inherit all the lessons learned. Claude stops making the same mistakes. The whole team gets faster.
 
 This is what separates productive AI-assisted coding from frustrating trial-and-error.
+
+---
+
+## Working with PDFs
+
+**PDFs are expensive.** Uploading a PDF consumes a large number of tokens because Claude must process the entire document as an image. A 20-page paper can easily use 50,000+ tokens—enough context for an entire coding session.
+
+### Best practices
+
+1. **Convert to text first.** Extract text from PDFs before uploading. A `.txt` file is far cheaper to read than a PDF.
+
+    ```bash
+    # Using pdftotext (install with: brew install poppler)
+    pdftotext paper.pdf paper.txt
+    ```
+
+2. **Use sub-agents to find relevant sections.** Instead of loading a full document, ask a sub-agent to search for specific content:
+
+    ```
+    Launch a sub-agent to search paper.txt for the section on
+    identification strategy. Return only that section.
+    ```
+
+3. **Split large documents.** Break lengthy PDFs into chapters or sections. Only load the parts you actually need for the current task.
+
+4. **Summarize first.** If you need the gist of a long document, ask Claude to summarize the text file before diving into details.
+
+!!! warning
+    Never upload a PDF "just in case" you might need it. Each upload burns through your context budget.
