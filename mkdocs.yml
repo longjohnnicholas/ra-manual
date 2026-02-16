@@ -6,14 +6,14 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: deep purple
-      accent: deep purple
+      primary: black
+      accent: amber
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: deep purple
-      accent: deep purple
+      primary: black
+      accent: amber
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode

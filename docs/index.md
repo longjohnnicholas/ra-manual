@@ -18,6 +18,18 @@ A practical guide for research assistants on using AI tools to accelerate resear
 
     Never let AI start coding immediately. Use **plan mode** to research, identify the right approach, and write a step-by-step plan for your approval.
 
+-   :material-format-list-bulleted:{ .lg .middle } __Start with Bullet Points__
+
+    ---
+
+    When giving instructions, start with a bullet list. Clear structure helps the AI understand your intent and reduces ambiguity.
+
+-   :material-speedometer:{ .lg .middle } __Mind Your Model Usage__
+
+    ---
+
+    Default to **Sonnet** for most tasks — you'll burn through credits fast with Opus. Save Opus for complex reasoning tasks only.
+
 -   :material-layers-triple-outline:{ .lg .middle } __Use Compound Engineering__
 
     ---

@@ -28,7 +28,18 @@
 
 /* Announcement bar styling */
 .md-banner {
-  background: linear-gradient(90deg, #673ab7, #9c27b0);
+  background: linear-gradient(90deg, #1a1a1a, #333);
+}
+
+/* Black & Amber accent overrides */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #1a1a1a;
+  --md-accent-fg-color: #ffab00;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0d0d0d;
+  --md-accent-fg-color: #ffc107;
 }
 
 .md-banner__inner {
