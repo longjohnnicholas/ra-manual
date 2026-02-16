@@ -1,60 +1,98 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # RA Manual
 
+<p class="subtitle" style="font-size: 1.4rem; color: #666; margin-top: -0.5rem;">
 A practical guide for research assistants on using AI tools to accelerate research workflows.
+</p>
+
+<div class="grid cards" markdown>
+
+-   :material-clipboard-check-outline:{ .lg .middle } __Always Plan First__
+
+    ---
+
+    Never let AI start coding immediately. Use **plan mode** to research, identify the right approach, and write a step-by-step plan for your approval.
+
+-   :material-layers-triple-outline:{ .lg .middle } __Use Compound Engineering__
+
+    ---
+
+    Break complex tasks into smaller pieces. Complete one step, verify it works, then move to the next. Reliable, reviewable progress.
+
+-   :material-account-multiple-outline:{ .lg .middle } __Use Sub-Agents Liberally__
+
+    ---
+
+    Spawn specialized sub-agents for research, exploration, and parallel tasks. Don't do everything in one thread.
+
+-   :material-cog-refresh-outline:{ .lg .middle } __Create Skills for Repetitive Tasks__
+
+    ---
+
+    Build reusable prompt templates. Turn multi-step workflows into one-command operations.
+
+-   :material-book-open-page-variant-outline:{ .lg .middle } __Keep Up with Best Practices__
+
+    ---
+
+    AI tools evolve rapidly. Read the [official docs](https://docs.anthropic.com/en/docs/claude-code) regularly. Last month's best practice may be outdated.
+
+-   :material-microphone-outline:{ .lg .middle } __Use Voice-to-Text__
+
+    ---
+
+    Speak at ~150 wpm vs typing ~50 wpm. Use [Wispr Flow](https://www.wispr.ai/) to 3x your input speed.
+
+</div>
 
 ---
 
-## The 6 Principles
+## Get Started
 
-These are the habits that separate productive AI-assisted coding from frustrating trial-and-error. Internalize these and you'll 10x your output.
+<div class="grid cards" markdown>
 
-### 1. Always Plan First
+-   :material-download:{ .lg .middle } __Setup__
 
-Never let the AI start coding immediately. Use **plan mode** to have it research the codebase, identify the right approach, and write out a step-by-step plan for your approval. Planning prevents wasted work and ensures alignment before a single line of code is written.
+    ---
 
-### 2. Use Compound Engineering
+    Install VS Code and Claude Code in ~10 minutes.
 
-Break complex tasks into smaller, well-defined pieces. Let the AI complete one step, verify it works, then move to the next. This creates reliable, reviewable progress instead of a giant diff you can't understand.
+    [:octicons-arrow-right-24: Installation guide](01-setup.md)
 
-### 3. Use Sub-Agents Liberally
+-   :material-lightbulb-on-outline:{ .lg .middle } __Why AI Coding Tools?__
 
-Spawn specialized sub-agents for research, exploration, and parallel tasks. Don't try to do everything in one conversation thread. Sub-agents can search codebases, read documentation, and gather context while you focus on the main task.
+    ---
 
-### 4. Create Skills for Repetitive Tasks
+    What makes these tools transformative for research.
 
-When you find yourself repeating the same instructions, create a **skill** (a reusable prompt template). Skills turn multi-step workflows into one-command operations. Build your personal library of skills over time.
+    [:octicons-arrow-right-24: Learn more](02-why-claude-code.md)
 
-### 5. Keep Up with Best Practices
+-   :material-rocket-launch-outline:{ .lg .middle } __Core Workflow__
 
-AI coding tools evolve rapidly. Read the official documentation regularly. What was best practice last month may be outdated. Stay current with:
+    ---
 
-- [Anthropic's Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)
-- [Anthropic's Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+    Plan mode, sub-agents, and compound engineering in practice.
 
-### 6. Use Voice-to-Text
+    [:octicons-arrow-right-24: See the workflow](03-workflow.md)
 
-You can speak at ~150 words per minute but only type ~50. Use voice-to-text software like [Wispr Flow](https://www.wispr.ai/) to dictate your prompts, explanations, and code comments. This alone can 3x your input speed and reduces the friction of communicating with AI.
+-   :material-link-variant:{ .lg .middle } __Resources__
+
+    ---
+
+    Documentation, tutorials, economics-specific tools, and skills.
+
+    [:octicons-arrow-right-24: Browse resources](05-resources.md)
+
+</div>
 
 ---
 
-## What This Manual Covers
-
-This manual teaches you how to work effectively with AI coding assistants. We use **Claude Code in VS Code** as our primary example, but the principles apply broadly — whether you're using ChatGPT, Cursor, Copilot, or other tools.
-
-AI is a force multiplier for research. Used well, it dramatically speeds up data cleaning, code writing, debugging, and even helps implement economic models from paper descriptions. Used poorly, it produces plausible-looking garbage. This manual shows you how to use it well.
-
-## Pages
-
-1. **[Setup](01-setup.md)** — Install VS Code and Claude Code
-2. **[Why AI Coding Tools?](02-why-claude-code.md)** — What makes these tools useful for research, with concrete examples
-3. **[Core Workflow](03-workflow.md)** — Plan mode, sub-agents, compound engineering in practice
-4. **[Code Principles](04-code-principles.md)** — Project organization and coding standards
-5. **[Resources](05-resources.md)** — Links to documentation and further reading
-
-## Quick Start
-
-1. Follow [Setup](01-setup.md) to install everything
-2. Read the **6 Principles** above — this is the most important part
-3. Work through [Core Workflow](03-workflow.md) to see the principles in action
-4. Keep [Code Principles](04-code-principles.md) bookmarked as a reference
+<p style="text-align: center; color: #888; font-size: 0.9rem;">
+AI is a force multiplier for research. Used well, it dramatically speeds up your work.<br>
+Used poorly, it produces plausible-looking garbage. This manual shows you how to use it well.
+</p>

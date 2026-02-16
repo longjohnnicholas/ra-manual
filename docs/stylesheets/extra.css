@@ -1,0 +1,59 @@
+/* Hero section styling */
+.md-content h1 {
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+/* Card hover effects */
+.md-typeset .grid.cards > ul > li {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon styling in cards */
+.md-typeset .grid.cards .twemoji,
+.md-typeset .grid.cards .emojione,
+.md-typeset .grid.cards svg {
+  color: var(--md-primary-fg-color);
+}
+
+/* Better link styling in cards */
+.md-typeset .grid.cards a {
+  font-weight: 600;
+}
+
+/* Announcement bar styling */
+.md-banner {
+  background: linear-gradient(90deg, #673ab7, #9c27b0);
+}
+
+.md-banner__inner {
+  font-size: 0.8rem;
+}
+
+/* Code block enhancements */
+.md-typeset pre > code {
+  border-radius: 8px;
+}
+
+/* Admonition styling */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+}
+
+/* Footer styling */
+.md-footer {
+  margin-top: 2rem;
+}
+
+/* Responsive subtitle */
+@media screen and (max-width: 76.1875em) {
+  .subtitle {
+    font-size: 1.1rem !important;
+  }
+}

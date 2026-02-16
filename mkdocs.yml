@@ -44,6 +44,9 @@ extra:
       link: https://github.com/longjohnnicholas/ra-manual
   generator: false
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - Setup: 01-setup.md
