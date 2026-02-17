@@ -74,7 +74,7 @@ Install VS Code and Claude Code in about 10 minutes.
 
 <div class="grid cards" markdown>
 
--   :material-dock-left:{ .lg .middle } __Side Panel__
+-   :material-dock-window:{ .lg .middle } __Side Panel__
 
     ---
 
@@ -82,7 +82,7 @@ Install VS Code and Claude Code in about 10 minutes.
 
     **Best for:** Visual review, interactive debugging, exploratory sessions.
 
--   :material-terminal:{ .lg .middle } __Terminal__
+-   :material-console-line:{ .lg .middle } __Terminal__
 
     ---
 

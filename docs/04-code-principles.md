@@ -21,19 +21,13 @@ repo_name/
 │       ├── temp/
 │       ├── output/
 │       └── README.md
-├── analysis/
-│   ├── main_regressions/
-│   │   ├── code/
-│   │   ├── temp/
-│   │   ├── output/
-│   │   └── README.md
-│   └── robustness/
-│       ├── code/
-│       ├── temp/
-│       ├── output/
-│       └── README.md
-└── figures/
-    └── main_figures/
+└── analysis/
+    ├── main_regressions/
+    │   ├── code/
+    │   ├── temp/
+    │   ├── output/
+    │   └── README.md
+    └── robustness/
         ├── code/
         ├── temp/
         ├── output/
