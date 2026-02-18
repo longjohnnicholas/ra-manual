@@ -80,7 +80,7 @@ A practical guide for research assistants on using AI tools.
 
     ---
 
-    Install VS Code and Claude Code.
+    Three options: Claude Code, Open Code + OpenRouter, or the Open Code desktop app.
 
     [:octicons-arrow-right-24: Installation guide](01-setup.md)
 
