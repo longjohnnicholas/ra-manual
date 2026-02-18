@@ -11,6 +11,7 @@ This page covers the tools and practices that make Claude Code powerful: CLAUDE.
 - [Plan Mode](#plan-mode) — always plan before coding
 - [Sub-Agents](#sub-agents) — parallel work and code review
 - [Compound Engineering](#compound-engineering) — learning from every session
+- [The Compound Engineering Plugin](#the-compound-engineering-plugin) — pre-built agents and workflows
 - [Working with PDFs](#working-with-pdfs) — minimize token usage
 - [Working with LaTeX and Overleaf](#working-with-latex-and-overleaf) — use Claude Code with Overleaf
 
@@ -241,6 +242,100 @@ Claude might say: *"The merge on firm_id needs to be many-to-one because of the 
 Over weeks and months, your CLAUDE.md becomes an institutional knowledge base. New RAs inherit all the lessons learned. Claude stops making the same mistakes. The whole team gets faster.
 
 This is what separates productive AI-assisted coding from frustrating trial-and-error.
+
+---
+
+## The Compound Engineering Plugin
+
+The compound engineering loop above is powerful on its own, but [Every, Inc.](https://every.to) has built an open-source plugin that gives you **pre-built agents, skills, and workflows** that automate the entire cycle. Instead of manually asking Claude to plan, review, and document learnings, you get slash commands that do it for you with specialized sub-agents running in parallel.
+
+**What you get:**
+
+| Category | What's included |
+|---|---|
+| **Workflow commands** | `/workflows:plan`, `/workflows:work`, `/workflows:review`, `/workflows:compound`, `/workflows:brainstorm` |
+| **Review agents (15)** | Security analysis, performance profiling, architecture review, Rails/Python/TypeScript reviewers, database migration checks, and more |
+| **Research agents (5)** | Framework docs lookup, git history analysis, best practices research, codebase exploration |
+| **Design agents (3)** | Figma-to-code comparison, iterative design refinement |
+| **Context7 MCP** | Real-time documentation lookup for 100+ frameworks |
+
+### The core workflow
+
+The plugin turns the compound engineering loop into four slash commands:
+
+1. **`/workflows:brainstorm`** — Clarify fuzzy requirements through guided questioning before you start
+2. **`/workflows:plan`** — Convert a feature idea into a detailed implementation plan. Sub-agents research your codebase and external best practices in parallel
+3. **`/workflows:work`** — Execute the plan with task tracking
+4. **`/workflows:review`** — Deploy 15+ specialized review agents simultaneously (security, performance, architecture, code style, etc.)
+5. **`/workflows:compound`** — Document what you learned so the next session starts smarter
+
+The philosophy is roughly **80% planning and review, 20% execution.** The plugin enforces this by making the planning and review steps as easy as typing a slash command.
+
+### Installing in Claude Code
+
+Run these two commands inside a Claude Code session:
+
+```bash
+# Add the plugin marketplace
+/plugin marketplace add https://github.com/EveryInc/compound-engineering-plugin
+
+# Install the plugin
+/plugin install compound-engineering
+```
+
+That's it. You'll immediately have access to all the slash commands and agents.
+
+### Installing in Open Code
+
+Use the cross-platform installer:
+
+```bash
+bunx @every-env/compound-plugin install compound-engineering --to opencode
+```
+
+This writes the plugin configuration to `~/.config/opencode/`. All agents, skills, and commands will be available the next time you launch Open Code.
+
+Alternatively, add it manually in your `opencode.json`:
+
+```json
+{
+  "plugin": ["@every-env/compound-plugin"]
+}
+```
+
+### What the review agents actually do
+
+When you run `/workflows:review`, the plugin launches multiple specialized sub-agents **in parallel** to review your code from different angles:
+
+- **Security sentinel** — checks for vulnerabilities, input validation, auth issues
+- **Performance oracle** — analyzes algorithmic complexity, database queries, memory usage
+- **Architecture strategist** — evaluates whether changes follow established patterns
+- **Code simplicity reviewer** — flags over-engineering and unnecessary complexity
+- **Data integrity guardian** — reviews migrations, data constraints, transaction safety
+- **Language-specific reviewers** — Python, TypeScript, and Rails reviewers with idiomatic style checks
+
+Each agent returns specific findings with line numbers and suggested fixes. It's like having six experienced developers review your PR simultaneously.
+
+### Recommended project structure
+
+The plugin works best when your project follows this layout:
+
+```
+project/
+├── CLAUDE.md              # Agent instructions and patterns
+├── docs/
+│   ├── brainstorms/       # Output from /workflows:brainstorm
+│   ├── plans/             # Output from /workflows:plan
+│   └── solutions/         # Documented problems and solutions
+└── todos/                 # Prioritized work items
+```
+
+The `/workflows:compound` command automatically updates `CLAUDE.md` and creates entries in `docs/solutions/` so learnings are searchable across future sessions.
+
+!!! tip "Start here"
+    After installing, try running `/workflows:plan` on your next task instead of jumping straight into coding. The difference in output quality is significant.
+
+:material-github: **[EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin)** — full source, documentation, and changelog.
 
 ---
 

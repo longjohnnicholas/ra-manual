@@ -20,6 +20,8 @@ These are repositories and tools built by economists, for economists.
 ## Compound Engineering
 
 - [Compound Engineering: How Every Codes With Agents](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents) — the article that introduced the compound engineering framework: plan → execute → review → compound.
+- [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) — comprehensive guide to the methodology.
+- [Compound Engineering Plugin](https://github.com/EveryInc/compound-engineering-plugin) — open-source plugin with 29 agents, 22 commands, and 19 skills. Works with Claude Code and Open Code. See [installation instructions](03-workflow.md#installing-in-claude-code).
 
 ## Guides and Tutorials
 
