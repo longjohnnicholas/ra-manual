@@ -1,21 +1,129 @@
 # Setup
 
 <p style="font-size: 1.1rem; color: #000;">
-Get coding with AI in about 10 minutes. Follow steps 1–4, then pick your editor in step 5.
+Pick one of two options and be coding with AI in about 10 minutes.
 </p>
+
+<div class="grid cards" markdown>
+
+-   :material-robot-outline:{ .lg .middle } __Option 1: Claude Code__
+
+    ---
+
+    Anthropic's official CLI, integrated into VS Code. Requires a Claude Pro/Max/Team subscription.
+
+    [:octicons-arrow-right-24: Jump to setup](#option-1-claude-code)
+
+-   :material-swap-horizontal:{ .lg .middle } __Option 2: Open Code + OpenRouter__
+
+    ---
+
+    Open-source alternative with access to 400+ models. Use cheap models for simple tasks, expensive ones when you need them. Ask Nick for the API key.
+
+    [:octicons-arrow-right-24: Jump to setup](#option-2-open-code-openrouter)
+
+</div>
 
 ---
 
-## 1. Get Your OpenRouter API Key
+## Option 1: Claude Code
+
+The official Anthropic tool with tight VS Code integration. You need a Claude Pro, Max, Team, or Enterprise subscription.
+
+<div class="grid cards" markdown>
+
+-   :material-download:{ .lg .middle } __1. Download VS Code__
+
+    ---
+
+    1. Visit [code.visualstudio.com](https://code.visualstudio.com/)
+    2. Download for your operating system
+    3. Launch it once to verify installation
+
+-   :material-console:{ .lg .middle } __2. Install Claude Code CLI__
+
+    ---
+
+    === "Mac / Linux"
+
+        ```bash
+        curl -fsSL https://claude.ai/install.sh | bash
+        ```
+
+    === "Windows (PowerShell)"
+
+        ```powershell
+        irm https://claude.ai/install.ps1 | iex
+        ```
+
+    === "Homebrew (Mac)"
+
+        ```bash
+        brew install --cask claude-code
+        ```
+
+    Verify with: `claude --version`
+
+-   :material-puzzle:{ .lg .middle } __3. Install VS Code Extension__
+
+    ---
+
+    1. Press `Cmd+Shift+X` (Mac) or `Ctrl+Shift+X` (Windows)
+    2. Search for **"Claude Code"** by Anthropic
+    3. Click **Install**
+
+-   :material-login:{ .lg .middle } __4. Authenticate__
+
+    ---
+
+    In the integrated terminal, run:
+
+    ```bash
+    claude
+    ```
+
+    Sign in via browser with your Claude account.
+
+</div>
+
+### Two Ways to Use Claude Code
+
+<div class="grid cards" markdown>
+
+-   :material-dock-window:{ .lg .middle } __Side Panel__
+
+    ---
+
+    Click the Claude icon in the left sidebar. Chat interface with visual diffs when Claude edits files.
+
+    **Best for:** Visual review, interactive debugging, exploratory sessions.
+
+-   :material-console-line:{ .lg .middle } __Terminal__
+
+    ---
+
+    Type `claude` in VS Code terminal. Text-based, faster for quick queries.
+
+    **Best for:** Quick questions, scripting, rapid iteration.
+
+</div>
+
+---
+
+## Option 2: Open Code + OpenRouter
+
+[Open Code](https://opencode.ai/) is a free, open-source AI coding agent (~106K GitHub stars, MIT license). Pair it with [OpenRouter](https://openrouter.ai/) and you get access to **400+ models** through a single API key — Claude, GPT, Gemini, DeepSeek, Kimi, and many more.
+
+### Why OpenRouter?
 
 !!! note "Ask Nick for the API key"
-    You don't need to create an account or add any money. **Ask Nick for the team's OpenRouter API key** and keep it somewhere safe — you'll need it in step 3.
+    You don't need to create an account or add any money. **Ask Nick for the team's OpenRouter API key** and keep it somewhere safe — you'll need it in step 2.
 
-[OpenRouter](https://openrouter.ai/) is a service that gives you access to **400+ AI models** through a single API key — Claude, GPT, Gemini, DeepSeek, Kimi, and many more. Instead of being locked into one provider, you can pick the best model for each task.
+[OpenRouter](https://openrouter.ai/) gives you **one API key** that works with models from Anthropic, OpenAI, Google, Meta, Moonshot, and dozens more. You're not locked into one provider.
 
-### Why This Matters: Model Flexibility
+The key advantage: **use expensive models for hard problems, cheap models for everything else.** A response that costs $0.25 with Claude Opus costs $0.02 with GPT 5.1 Codex Mini — and for simple tasks, the cheaper model works just as well.
 
-The key advantage of OpenRouter is that you can **use expensive models for hard problems and cheap models for everything else.** A response that costs $0.25 with Claude Opus costs $0.02 with GPT 5.1 Codex Mini — and for simple tasks, the cheaper model works just as well.
+#### Model Cost Comparison
 
 Prices per **million tokens** (as of February 2026 — check [openrouter.ai/models](https://openrouter.ai/models) for current pricing):
 
@@ -40,11 +148,9 @@ Prices per **million tokens** (as of February 2026 — check [openrouter.ai/mode
 
     Use Opus only for hard problems (maybe 10-20% of your queries) and route everything else to cheaper models. This can cut costs by 60-90%.
 
----
+### Step-by-Step Setup
 
-## 2. Install Open Code
-
-[Open Code](https://opencode.ai/) is a free, open-source AI coding agent (~106K GitHub stars, MIT license) that works with OpenRouter and 75+ other providers.
+**1. Install Open Code**
 
 === "Mac / Linux"
 
@@ -70,9 +176,7 @@ Prices per **million tokens** (as of February 2026 — check [openrouter.ai/mode
     scoop install opencode
     ```
 
----
-
-## 3. Connect OpenRouter
+**2. Connect OpenRouter**
 
 Launch Open Code in any folder:
 
@@ -90,9 +194,7 @@ Alternatively, set it as an environment variable in your shell profile (e.g., `~
 export OPENROUTER_API_KEY=sk-or-your-key-here
 ```
 
----
-
-## 4. Select a Model
+**3. Select a model**
 
 Run `/models` inside Open Code to see all available models and pick one:
 
@@ -104,7 +206,7 @@ Or launch with a specific model directly:
 opencode -m openrouter/anthropic/claude-sonnet-4-6
 ```
 
-### Switching Models by Task Complexity
+**4. Switching models by task complexity**
 
 This is the real power of this setup — choose the right model for each task:
 
@@ -116,7 +218,7 @@ This is the real power of this setup — choose the right model for each task:
 | Fixing a typo or renaming variables | GPT 5.1 Codex Mini | Trivial task, use the cheapest option |
 | Exploring a new codebase | Kimi K2.5 | Cheap with a huge 262K context window |
 
-**To switch models during a session**, run `/models` and pick a different one. To set defaults for everyday work, add this to your `opencode.json` config file:
+To switch models during a session, run `/models` and pick a different one. To set defaults, add this to your `opencode.json` config file:
 
 ```json
 {
@@ -125,23 +227,17 @@ This is the real power of this setup — choose the right model for each task:
 }
 ```
 
-This uses Sonnet as your primary model and Codex Mini for lightweight tasks automatically.
-
----
-
-## 5. Choose Your Editor
-
-You've installed Open Code and connected it to OpenRouter. Now pick how you want to use it:
+**5. Choose your editor**
 
 <div class="grid cards" markdown>
 
--   :material-microsoft-visual-studio-code:{ .lg .middle } __Option A: VS Code__
+-   :material-microsoft-visual-studio-code:{ .lg .middle } __Option A: Terminal + VS Code__
 
     ---
 
     Use Open Code inside VS Code — the same editor used across most research teams.
 
-    [:octicons-arrow-right-24: Set up VS Code](#option-a-vs-code)
+    [:octicons-arrow-right-24: Set up VS Code](#option-a-terminal-vs-code)
 
 -   :material-application:{ .lg .middle } __Option B: Open Code Desktop App__
 
@@ -153,7 +249,7 @@ You've installed Open Code and connected it to OpenRouter. Now pick how you want
 
 </div>
 
-### Option A: VS Code
+#### Option A: Terminal + VS Code
 
 **1. Download VS Code**
 
@@ -163,7 +259,7 @@ You've installed Open Code and connected it to OpenRouter. Now pick how you want
 
 **2. Install the Open Code Extension**
 
-Open Code has a native VS Code extension. Either:
+Either:
 
 - Run `opencode` in the VS Code integrated terminal — the extension installs automatically
 - Or press `Cmd+Shift+X` (Mac) / `Ctrl+Shift+X` (Windows), search for **"OpenCode"**, and click **Install**
@@ -172,10 +268,10 @@ Open Code has a native VS Code extension. Either:
 
 Open a project folder in VS Code, then:
 
-- **Quick launch:** `Cmd+Esc` (Mac) or `Ctrl+Esc` (Windows) to open Open Code
+- **Quick launch:** `Cmd+Esc` (Mac) or `Ctrl+Esc` (Windows)
 - **Or:** type `opencode` in the VS Code terminal
 
-### Option B: Open Code Desktop App
+#### Option B: Open Code Desktop App
 
 A standalone desktop app — currently in Beta, built with Tauri (lightweight and native).
 
@@ -195,7 +291,7 @@ A standalone desktop app — currently in Beta, built with Tauri (lightweight an
 
 **2. Open a project folder and start coding**
 
-The desktop app uses the same OpenRouter configuration you set up in steps 3-4. No extra setup needed.
+The desktop app uses the same OpenRouter connection you set up in steps 2-3. No extra setup needed.
 
 !!! info "When to use the desktop app"
     The desktop app is a good choice if:
@@ -209,21 +305,10 @@ The desktop app uses the same OpenRouter configuration you set up in steps 3-4. 
 ## Verify Installation
 
 !!! success "Final Check"
-    Whichever editor you chose, open a project folder and ask:
+    Whichever option you chose, open a project folder and ask:
 
     ```
     What files are in this directory?
     ```
 
     If the AI lists your files, you're ready. [:octicons-arrow-right-24: Next: Learn why AI coding tools are transformative](02-why-claude-code.md)
-
----
-
-??? note "Alternative: Claude Code + VS Code"
-    If you have a Claude Pro, Max, Team, or Enterprise subscription, you can use Anthropic's official **Claude Code** CLI instead of Open Code.
-
-    1. Install: `curl -fsSL https://claude.ai/install.sh | bash`
-    2. Install the VS Code extension: search for "Claude Code" by Anthropic
-    3. Authenticate: run `claude` in the terminal and sign in
-
-    Claude Code only works with Anthropic models (no OpenRouter, no model switching). It's a good option if you already have a subscription, but Open Code + OpenRouter gives you more flexibility.
