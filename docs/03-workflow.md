@@ -1,31 +1,57 @@
-# Getting the Most from Claude Code
+# Getting the Most from Coding with Agents
 
-This page covers the tools and practices that make Claude Code powerful: CLAUDE.md files, skills, sub-agents, and the compound engineering workflow.
+These tools and practices work across AI coding agents — Claude Code, Open Code, Cursor, GitHub Copilot, and others. The concepts are the same; only the file paths and keybindings differ.
 
 ---
 
 **On this page:**
 
-- [CLAUDE.md Files](#claudemd-files) — persistent project context
+- [Project Context Files](#project-context-files) — AGENTS.md and CLAUDE.md
 - [Skills](#skills) — reusable instructions for repeated tasks
 - [Plan Mode](#plan-mode) — always plan before coding
 - [Sub-Agents](#sub-agents) — parallel work and code review
 - [Compound Engineering](#compound-engineering) — learning from every session
 - [The Compound Engineering Plugin](#the-compound-engineering-plugin) — pre-built agents and workflows
 - [Working with PDFs](#working-with-pdfs) — minimize token usage
-- [Working with LaTeX and Overleaf](#working-with-latex-and-overleaf) — use Claude Code with Overleaf
+- [Working with LaTeX and Overleaf](#working-with-latex-and-overleaf) — use agents with Overleaf
 
 ---
 
-## CLAUDE.md Files
+## Project Context Files
 
-### What it is
+### What they are
 
-A `CLAUDE.md` file is a markdown file that Claude reads automatically at the start of every conversation. It gives Claude context about your project that it can't infer from code alone—things like project goals, conventions, common pitfalls, and how to run things.
+A project context file is a markdown file that your AI agent reads automatically at the start of every conversation. It gives the agent context it can't infer from code alone — project goals, conventions, common pitfalls, and how to run things.
+
+There are two conventions:
+
+- **`AGENTS.md`** — the open standard, supported by 20+ tools (Open Code, Cursor, Copilot, Codex, Gemini CLI, and more). Governed by the [Agentic AI Foundation](https://aaif.io/) under the Linux Foundation.
+- **`CLAUDE.md`** — Claude Code's equivalent. Same concept, different filename.
+
+### Which file should you use?
+
+| Tool | Reads | Also reads |
+|------|-------|------------|
+| **Open Code** | `AGENTS.md` | `CLAUDE.md` (fallback) |
+| **Claude Code** | `CLAUDE.md` | — |
+| **Cursor** | `AGENTS.md` | `.cursor/rules/` |
+| **GitHub Copilot** | `AGENTS.md` | `.github/copilot-instructions.md` |
+| **OpenAI Codex** | `AGENTS.md` | — |
+
+!!! tip "Cross-tool compatibility"
+    If you use multiple tools (or might switch later), create an `AGENTS.md` as your primary file. Then make Claude Code read it too with a one-line `CLAUDE.md`:
+
+    ```markdown
+    @AGENTS.md
+    ```
+
+    Or create a symlink: `ln -s AGENTS.md CLAUDE.md`
+
+    This way, you maintain one file that works everywhere.
 
 ### Why you need one
 
-Without a `CLAUDE.md`, you'd have to re-explain your project context every session. With one, Claude starts every conversation already knowing:
+Without a project context file, you'd have to re-explain your project every session. With one, the agent starts every conversation already knowing:
 
 - What the project is about
 - Your coding conventions
@@ -36,20 +62,30 @@ This saves time and prevents repeated mistakes.
 
 ### Where to save it
 
-| Location | Scope | Git? |
-|----------|-------|------|
-| `./code/CLAUDE.md` | This task subfolder | Yes |
-| `./CLAUDE.md` | Whole project | Yes |
-| `~/.claude/CLAUDE.md` | All your projects | No |
-| `./CLAUDE.local.md` | Personal overrides | No (gitignore it) |
+=== "Open Code"
 
-Claude reads these recursively—if you're working in `cleaning/survey_data/code/`, it picks up CLAUDE.md files from that directory and all parent directories.
+    | Location | Scope |
+    |----------|-------|
+    | `./AGENTS.md` | This project |
+    | `./code/AGENTS.md` | This task subfolder |
+    | `~/.config/opencode/AGENTS.md` | All your projects |
+
+=== "Claude Code"
+
+    | Location | Scope | Git? |
+    |----------|-------|------|
+    | `./CLAUDE.md` | This project | Yes |
+    | `./code/CLAUDE.md` | This task subfolder | Yes |
+    | `~/.claude/CLAUDE.md` | All your projects | No |
+    | `./CLAUDE.local.md` | Personal overrides | No (gitignore it) |
+
+Both tools read these recursively — if you're working in `cleaning/survey_data/code/`, the agent picks up context files from that directory and all parent directories.
 
 ### Best practices
 
-**Keep it short.** Only include things Claude would get wrong without. For each line, ask: *"Would removing this cause Claude to make a mistake?"* If not, cut it.
+**Keep it short.** Only include things the agent would get wrong without. For each line, ask: *"Would removing this cause a mistake?"* If not, cut it.
 
-**Update it at the end of each session.** Ask Claude: *"Is there anything we learned that should go into CLAUDE.md?"* Add useful learnings. This is how knowledge compounds.
+**Update it at the end of each session.** Ask: *"Is there anything we learned that should go into AGENTS.md?"* Add useful learnings. This is how knowledge compounds.
 
 **Example:**
 
@@ -72,7 +108,7 @@ using Indonesian manufacturing census (1991-2000).
 ```
 
 !!! tip
-    Run `/init` to auto-generate a starter CLAUDE.md for your project.
+    Run `/init` to auto-generate a starter context file for your project. Both Claude Code and Open Code support this command.
 
 ---
 
@@ -82,7 +118,9 @@ using Indonesian manufacturing census (1991-2000).
 
 Skills are markdown files containing specialist instructions for tasks you do repeatedly. Instead of re-typing the same prompt every time, you create a skill once and invoke it with a slash command.
 
-Think of them as saved prompts with superpowers—they can include detailed instructions, checklists, and even specify which tools Claude should use.
+Think of them as saved prompts with superpowers — they can include detailed instructions, checklists, and even specify which tools the agent should use.
+
+The skill format (`SKILL.md` with YAML frontmatter) is an [open standard](https://agentskills.io/specification) that works across Claude Code, Open Code, GitHub Copilot, Cursor, and others.
 
 ### Why they're useful
 
@@ -90,13 +128,27 @@ Think of them as saved prompts with superpowers—they can include detailed inst
 - **Consistency** — the task is done the same way every time
 - **Shareable** — your team can use the same skills
 - **Composable** — combine multiple skills for complex workflows
+- **Portable** — the same SKILL.md works in different tools
 
 ### Where to save them
 
-| Location | Scope |
-|----------|-------|
-| `.claude/skills/<skill-name>/SKILL.md` | This project |
-| `~/.claude/skills/<skill-name>/SKILL.md` | All projects |
+=== "Open Code"
+
+    | Location | Scope |
+    |----------|-------|
+    | `.opencode/skills/<skill-name>/SKILL.md` | This project |
+    | `.agents/skills/<skill-name>/SKILL.md` | This project (alt) |
+    | `.claude/skills/<skill-name>/SKILL.md` | This project (Claude Code compat) |
+    | `~/.config/opencode/skills/<skill-name>/SKILL.md` | All projects |
+
+    Open Code searches all these paths, so skills written for Claude Code work automatically.
+
+=== "Claude Code"
+
+    | Location | Scope |
+    |----------|-------|
+    | `.claude/skills/<skill-name>/SKILL.md` | This project |
+    | `~/.claude/skills/<skill-name>/SKILL.md` | All projects |
 
 ### Example: Running regressions
 
@@ -114,7 +166,7 @@ When asked to run regressions:
 4. Report any errors from the Stata log
 ```
 
-Invoke with `/run-regressions` or just describe what you want—Claude auto-detects relevant skills.
+Invoke with `/run-regressions` or just describe what you want — the agent auto-detects relevant skills.
 
 ### Example: Weekly task update
 
@@ -136,17 +188,26 @@ Update my weekly task markdown file:
 
 ## Plan Mode
 
-**Never let Claude start coding immediately on a complex task.** Always start in plan mode.
+**Never let the agent start coding immediately on a complex task.** Always start in plan mode.
 
 ### What it does
 
-Claude analyzes your codebase with read-only access. It can read files, search code, and explore—but won't edit anything until you approve.
+The agent analyzes your codebase with read-only access. It can read files, search code, and explore — but won't edit anything until you approve.
 
 ### How to activate it
 
-- Keyboard: `Shift+Tab` twice (you'll see "plan mode on")
-- Command: `/plan`
-- CLI: `claude --permission-mode plan`
+=== "Claude Code"
+
+    - Keyboard: `Shift+Tab` twice (you'll see "plan mode on")
+    - Command: `/plan`
+    - CLI: `claude --permission-mode plan`
+
+=== "Open Code"
+
+    - Press **Tab** to switch to the **plan** agent (read-only analysis)
+    - Press **Tab** again to switch back to the **build** agent (full access)
+
+    Open Code has two built-in agents: `plan` (read-only) and `build` (full access). Switching between them is how you control what the agent can do.
 
 ### The workflow
 
@@ -154,17 +215,17 @@ Claude analyzes your codebase with read-only access. It can read files, search c
 2. **Ask for a plan.** Say: *"Create a detailed plan. Break it into steps."*
 3. **Review and iterate.** Push back, ask questions. This is where 80% of the value is.
 4. **Ask about parallelization.** *"Can any of these steps run in parallel with sub-agents?"*
-5. **Approve and execute.** Switch to normal mode (`Shift+Tab`) to let Claude work.
+5. **Approve and execute.** Switch to build/normal mode to let the agent work.
 6. **Review the output** before committing.
 
 !!! warning
-    Skipping plan mode is the #1 cause of Claude producing unusable code.
+    Skipping plan mode is the #1 cause of agents producing unusable code.
 
 ---
 
 ## Sub-Agents
 
-Sub-agents are separate Claude instances that handle specific subtasks. Use them for parallelization and code review.
+Sub-agents are separate AI instances that handle specific subtasks. Use them for parallelization and code review.
 
 ### Parallelization
 
@@ -179,39 +240,65 @@ Each sub-agent works in its own context and returns results to the main conversa
 
 ### Code review
 
-After Claude finishes a task, launch a review sub-agent:
+After the agent finishes a task, launch a review sub-agent:
 
 ```
 Launch a sub-agent to review the code you just wrote. Check for:
 - Correctness of the implementation
 - Edge cases and error handling
-- Whether it follows our CLAUDE.md conventions
+- Whether it follows our AGENTS.md conventions
 ```
 
-This catches mistakes the "author" Claude might miss—like a second pair of eyes on a PR.
+This catches mistakes the "author" agent might miss — like a second pair of eyes on a PR.
 
 ### Custom sub-agents
 
-For repeated review tasks, create custom agents in `.claude/agents/`:
+For repeated review tasks, create custom agents:
 
-```markdown
-# .claude/agents/code-reviewer.md
----
-name: code-reviewer
-description: Reviews code for correctness and conventions
-tools: Read, Grep, Glob
-model: sonnet
----
+=== "Open Code"
 
-You are a code reviewer for an economics research project.
-Check for:
-- Logical correctness (do regressions match the spec?)
-- Data handling (are merges correct? dropped observations?)
-- Style (follows CLAUDE.md conventions?)
-- Reproducibility (relative paths? seeds set?)
+    Save in `.opencode/agents/` or `~/.config/opencode/agents/`:
 
-Be specific. Reference line numbers. Suggest fixes.
-```
+    ```markdown
+    # .opencode/agents/code-reviewer.md
+    ---
+    name: code-reviewer
+    description: Reviews code for correctness and conventions
+    tools: Read, Grep, Glob
+    ---
+
+    You are a code reviewer for an economics research project.
+    Check for:
+    - Logical correctness (do regressions match the spec?)
+    - Data handling (are merges correct? dropped observations?)
+    - Style (follows AGENTS.md conventions?)
+    - Reproducibility (relative paths? seeds set?)
+
+    Be specific. Reference line numbers. Suggest fixes.
+    ```
+
+=== "Claude Code"
+
+    Save in `.claude/agents/`:
+
+    ```markdown
+    # .claude/agents/code-reviewer.md
+    ---
+    name: code-reviewer
+    description: Reviews code for correctness and conventions
+    tools: Read, Grep, Glob
+    model: sonnet
+    ---
+
+    You are a code reviewer for an economics research project.
+    Check for:
+    - Logical correctness (do regressions match the spec?)
+    - Data handling (are merges correct? dropped observations?)
+    - Style (follows CLAUDE.md conventions?)
+    - Reproducibility (relative paths? seeds set?)
+
+    Be specific. Reference line numbers. Suggest fixes.
+    ```
 
 ---
 
@@ -221,10 +308,10 @@ The practice that makes you better over time. **Every session should make the ne
 
 ### The loop
 
-1. **Plan** — create a step-by-step plan with Claude
-2. **Work** — let Claude execute the plan
+1. **Plan** — create a step-by-step plan with the agent
+2. **Work** — let the agent execute the plan
 3. **Assess** — use a sub-agent to review the work
-4. **Compound** — ask what should go into CLAUDE.md or a skill
+4. **Compound** — ask what should go into AGENTS.md or a skill
 
 ### The key habit
 
@@ -232,14 +319,14 @@ After every task, ask:
 
 ```
 Is there anything we learned from this session that should go into
-CLAUDE.md so we don't make the same mistakes again?
+AGENTS.md so we don't make the same mistakes again?
 ```
 
-Claude might say: *"The merge on firm_id needs to be many-to-one because of the panel structure. We should note that."* Add it to CLAUDE.md. Future sessions start with that knowledge.
+The agent might say: *"The merge on firm_id needs to be many-to-one because of the panel structure. We should note that."* Add it to your context file. Future sessions start with that knowledge.
 
 ### Why it matters
 
-Over weeks and months, your CLAUDE.md becomes an institutional knowledge base. New RAs inherit all the lessons learned. Claude stops making the same mistakes. The whole team gets faster.
+Over weeks and months, your context file becomes an institutional knowledge base. New RAs inherit all the lessons learned. The agent stops making the same mistakes. The whole team gets faster.
 
 This is what separates productive AI-assisted coding from frustrating trial-and-error.
 
@@ -247,7 +334,7 @@ This is what separates productive AI-assisted coding from frustrating trial-and-
 
 ## The Compound Engineering Plugin
 
-The compound engineering loop above is powerful on its own, but [Every, Inc.](https://every.to) has built an open-source plugin that gives you **pre-built agents, skills, and workflows** that automate the entire cycle. Instead of manually asking Claude to plan, review, and document learnings, you get slash commands that do it for you with specialized sub-agents running in parallel.
+The compound engineering loop above is powerful on its own, but [Every, Inc.](https://every.to) has built an open-source plugin that gives you **pre-built agents, skills, and workflows** that automate the entire cycle. Instead of manually asking the agent to plan, review, and document learnings, you get slash commands that do it for you with specialized sub-agents running in parallel.
 
 **What you get:**
 
@@ -322,7 +409,7 @@ The plugin works best when your project follows this layout:
 
 ```
 project/
-├── CLAUDE.md              # Agent instructions and patterns
+├── AGENTS.md              # Agent instructions and patterns
 ├── docs/
 │   ├── brainstorms/       # Output from /workflows:brainstorm
 │   ├── plans/             # Output from /workflows:plan
@@ -330,7 +417,7 @@ project/
 └── todos/                 # Prioritized work items
 ```
 
-The `/workflows:compound` command automatically updates `CLAUDE.md` and creates entries in `docs/solutions/` so learnings are searchable across future sessions.
+The `/workflows:compound` command automatically updates your context file and creates entries in `docs/solutions/` so learnings are searchable across future sessions.
 
 !!! tip "Start here"
     After installing, try running `/workflows:plan` on your next task instead of jumping straight into coding. The difference in output quality is significant.
@@ -341,7 +428,7 @@ The `/workflows:compound` command automatically updates `CLAUDE.md` and creates 
 
 ## Working with PDFs
 
-**PDFs are expensive.** Uploading a PDF consumes a large number of tokens because Claude must process the entire document as an image. A 20-page paper can easily use 50,000+ tokens—enough context for an entire coding session.
+**PDFs are expensive.** Uploading a PDF consumes a large number of tokens because the agent must process the entire document as an image. A 20-page paper can easily use 50,000+ tokens — enough context for an entire coding session.
 
 ### Best practices
 
@@ -361,7 +448,7 @@ The `/workflows:compound` command automatically updates `CLAUDE.md` and creates 
 
 3. **Split large documents.** Break lengthy PDFs into chapters or sections. Only load the parts you actually need for the current task.
 
-4. **Summarize first.** If you need the gist of a long document, ask Claude to summarize the text file before diving into details.
+4. **Summarize first.** If you need the gist of a long document, ask the agent to summarize the text file before diving into details.
 
 !!! warning
     Never upload a PDF "just in case" you might need it. Each upload burns through your context budget.
@@ -383,7 +470,7 @@ Overleaf is great for collaborative LaTeX editing, but its interface doesn't sup
 
     (Find your Git URL in Overleaf: Menu → Git)
 
-2. **Edit with Claude Code.** Open the folder in VS Code with Claude Code. Now you have full access to skills, sub-agents, and all the features covered in this guide.
+2. **Edit with your agent.** Open the folder in VS Code or the Open Code desktop app. Now you have full access to skills, sub-agents, and all the features covered in this guide.
 
 3. **Push back to Overleaf.** When done, commit and push:
 
@@ -403,4 +490,4 @@ If multiple co-authors are working simultaneously:
 
 ### Why not the Chrome extension?
 
-Claude's browser extension can help with writing, but it can't run specialized skills, use sub-agents, or read your CLAUDE.md for project context. For serious paper drafting, the local Git workflow is worth the setup.
+Claude's browser extension can help with writing, but it can't run specialized skills, use sub-agents, or read your project context file. For serious paper drafting, the local Git workflow is worth the setup.

@@ -51,7 +51,7 @@ nav:
   - Home: index.md
   - Setup: 01-setup.md
   - Why AI Coding Tools?: 02-why-claude-code.md
-  - Getting the Most from Claude Code: 03-workflow.md
+  - Getting the Most from Agents: 03-workflow.md
   - Connected Tools: 06-connected-tools.md
   - Code Principles: 04-code-principles.md
   - Resources: 05-resources.md

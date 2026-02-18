@@ -92,11 +92,11 @@ A practical guide for research assistants on using AI tools.
 
     [:octicons-arrow-right-24: Learn more](02-why-claude-code.md)
 
--   :material-rocket-launch-outline:{ .lg .middle } __Getting the Most from Claude Code__
+-   :material-rocket-launch-outline:{ .lg .middle } __Getting the Most from Agents__
 
     ---
 
-    CLAUDE.md, skills, sub-agents, compound engineering.
+    AGENTS.md, skills, sub-agents, compound engineering — works across Claude Code, Open Code, and more.
 
     [:octicons-arrow-right-24: Learn more](03-workflow.md)
 
