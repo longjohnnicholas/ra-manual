@@ -1,19 +1,16 @@
 # Connected External Tools: Google Drive, Gmail, and More
 
-One of the most powerful things about incorporating AI into your research workflow is that it goes far beyond writing code. You can connect Claude to external services — Google Drive, Gmail, Google Sheets, and others — and automate operational tasks that previously required hours of manual work.
+One of the most powerful things about incorporating AI into your research workflow is that it goes far beyond writing code. You can connect your AI agent to external services — Google Drive, Gmail, Google Sheets, WhatsApp, and others — and automate operational tasks that previously required hours of manual work.
 
 This is especially valuable in fieldwork, where the volume of reports, data checks, and communications can overwhelm even a well-organized team.
 
-!!! info "Claude Code only"
-    MCP connectors are currently available in Claude Code. Codex CLI does not yet support MCP. If you're using Codex CLI, you can skip this page.
-
 ## What Are MCP Connectors?
 
-MCP (Model Context Protocol) is a standard that lets Claude talk to external services. An MCP connector is a small bridge that gives Claude the ability to read your Google Drive files, search your Gmail, pull data from Google Sheets, and more — all from within Claude Code.
+MCP (Model Context Protocol) is an open standard that lets AI coding agents talk to external services. Both Claude Code and Codex CLI support MCP. An MCP connector is a small bridge that gives your agent the ability to read your Google Drive files, search your Gmail, send WhatsApp messages, pull data from Google Sheets, and more.
 
-Think of it this way: without MCP, Claude can only see files in your local project folder. With MCP connectors, Claude can reach into your Drive, your inbox, and other tools as if they were part of the project.
+Think of it this way: without MCP, your agent can only see files in your local project folder. With MCP connectors, it can reach into your Drive, your inbox, your WhatsApp chats, and other tools as if they were part of the project.
 
-Setting up a connector typically involves installing a small package and authenticating with the service (e.g., logging into your Google account). Once connected, you can ask Claude to interact with these services in natural language.
+Setting up a connector typically involves installing a small package and authenticating with the service (e.g., logging into your Google account). Once connected, you can ask your agent to interact with these services in natural language.
 
 ## Example: Automating Fieldwork Quality Control
 
@@ -55,21 +52,31 @@ Study these examples to understand how MCP skills are structured, then adapt the
 
 ## Other Use Cases
 
-The Drive + Gmail pattern generalizes to many research operations:
+The Drive + Gmail + WhatsApp pattern generalizes to many research operations:
 
-- **Literature monitoring** — Connect to Gmail and have Claude scan for new working paper alerts from NBER, SSRN, or journal feeds, then summarize the relevant ones.
-- **Data delivery tracking** — When a data provider sends files to a shared Drive folder, have Claude detect new arrivals, run basic validation checks, and notify you.
-- **Survey instrument review** — Store survey drafts on Drive and have Claude review them for consistency, skip logic errors, or translation issues.
-- **Meeting preparation** — Have Claude scan recent emails and Drive documents related to a co-author meeting and produce a summary of open items.
+- **Field team communication** — Connect to WhatsApp and have your agent read messages from field supervisors, flag urgent issues, and draft responses.
+- **Literature monitoring** — Connect to Gmail and have your agent scan for new working paper alerts from NBER, SSRN, or journal feeds, then summarize the relevant ones.
+- **Data delivery tracking** — When a data provider sends files to a shared Drive folder, have your agent detect new arrivals, run basic validation checks, and notify you.
+- **Survey instrument review** — Store survey drafts on Drive and have your agent review them for consistency, skip logic errors, or translation issues.
+- **Meeting preparation** — Have your agent scan recent emails and Drive documents related to a co-author meeting and produce a summary of open items.
 
 ## Getting Started with MCP Connectors
 
-To connect Claude Code to Google Drive and Gmail, you'll need to set up MCP servers. The basic process:
+To connect your agent to Google Drive, Gmail, WhatsApp, or other services, you'll need to set up MCP servers. The basic process:
 
-1. **Install the MCP server package** for the service you want (e.g., Google Drive, Gmail)
-2. **Authenticate** — follow the OAuth flow to grant Claude access to your account
-3. **Configure Claude Code** — add the MCP server to your Claude Code settings so it's available in your sessions
-4. **Build skills** — write skills (in `.claude/skills/`) that use the connected services
+1. **Install the MCP server package** for the service you want (e.g., Google Drive, Gmail, WhatsApp)
+2. **Authenticate** — follow the OAuth flow to grant your agent access to your account
+3. **Configure your agent** — add the MCP server to your settings:
+
+=== "Claude Code"
+
+    Add the server to your Claude Code settings (JSON format). See [Claude Code MCP docs](https://code.claude.com/docs/en/mcp).
+
+=== "Codex CLI"
+
+    Run `codex mcp add <server-name> -- <command>` or edit `~/.codex/config.toml` directly. See [Codex MCP docs](https://developers.openai.com/codex/mcp/).
+
+4. **Build skills** — write skills that use the connected services
 
 For detailed setup instructions and working examples, see the [freetown/tools/claude](https://github.com/ntsivanidis/freetown/tree/main/tools/claude) repository.
 

@@ -4,9 +4,6 @@
 Install VS Code, pick your AI agent, and be coding in about 10 minutes.
 </p>
 
-!!! info "Switching from Open Code or OpenRouter?"
-    Either option below is a direct replacement. Pick whichever matches your subscription.
-
 <div class="grid cards" markdown>
 
 -   :material-robot-outline:{ .lg .middle } __Option A: Claude Code__
