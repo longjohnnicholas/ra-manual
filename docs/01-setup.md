@@ -41,15 +41,15 @@ Both AI agents run inside VS Code. Install it first.
 
 ## Step 2: Pick Your AI Agent
 
-Choose the agent that matches your subscription. Both are equally capable for research tasks.
+Your advisor will tell you which to use. Both are equally capable for research tasks.
 
-!!! tip "Which should I pick?"
-    - Already have a **Claude** subscription? → [Option A](#option-a-claude-code)
-    - Already have a **ChatGPT** subscription? → [Option B](#option-b-codex-cli)
-    - Neither? Ask your advisor which the team uses.
-    - Both work equally well. You can install both if you want to try each.
+!!! tip "Be smart about models and cost"
+    Codex CLI (ChatGPT Plus, $20/mo) tends to offer significantly more usage than Claude Code at the same price point — comparable to Claude's $100/mo Max plan. Whichever tool you use, **switch models frequently within a session:**
 
-    **If your advisor is providing the subscription**, ask them to add your email to the team workspace before you begin.
+    - **Use basic models for simple tasks** — file edits, formatting, boilerplate code, quick questions. These are fast and cheap.
+    - **Use advanced models for complex tasks** — debugging tricky logic, writing new algorithms, architectural planning. Models like Claude Opus or the top-tier Codex model are powerful but consume your usage budget faster.
+
+    Don't run an expensive model when a cheap one will do. Getting into the habit of switching models is one of the easiest ways to stretch your subscription.
 
 ---
 
