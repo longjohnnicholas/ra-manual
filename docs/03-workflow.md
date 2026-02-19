@@ -1,6 +1,6 @@
 # Getting the Most from Coding with Agents
 
-These tools and practices work across AI coding agents — Claude Code, Open Code, Cursor, GitHub Copilot, and others. The concepts are the same; only the file paths and keybindings differ.
+These tools and practices work across AI coding agents — Claude Code, Codex CLI, Cursor, GitHub Copilot, and others. The concepts are the same; only the file paths and keybindings differ.
 
 ---
 
@@ -25,29 +25,41 @@ A project context file is a markdown file that your AI agent reads automatically
 
 There are two conventions:
 
-- **`AGENTS.md`** — the open standard, supported by 20+ tools (Open Code, Cursor, Copilot, Codex, Gemini CLI, and more). Governed by the [Agentic AI Foundation](https://aaif.io/) under the Linux Foundation.
+- **`AGENTS.md`** — the open standard, supported by 20+ tools (Codex CLI, Cursor, Copilot, Gemini CLI, and more). Governed by the [Agentic AI Foundation](https://aaif.io/) under the Linux Foundation.
 - **`CLAUDE.md`** — Claude Code's equivalent. Same concept, different filename.
 
 ### Which file should you use?
 
 | Tool | Reads | Also reads |
 |------|-------|------------|
-| **Open Code** | `AGENTS.md` | `CLAUDE.md` (fallback) |
 | **Claude Code** | `CLAUDE.md` | — |
+| **Codex CLI** | `AGENTS.md` | — |
 | **Cursor** | `AGENTS.md` | `.cursor/rules/` |
 | **GitHub Copilot** | `AGENTS.md` | `.github/copilot-instructions.md` |
-| **OpenAI Codex** | `AGENTS.md` | — |
 
-!!! tip "Cross-tool compatibility"
-    If you use multiple tools (or might switch later), create an `AGENTS.md` as your primary file. Then make Claude Code read it too with a one-line `CLAUDE.md`:
+!!! tip "Using both tools on the same repo (recommended setup)"
+    If your team uses both Claude Code and Codex CLI — or might switch later — use this setup:
+
+    **1. Write all shared instructions in `AGENTS.md`** (the open standard):
 
     ```markdown
+    # AGENTS.md
+    Project context, conventions, commands, gotchas...
+    ```
+
+    **2. Create a `CLAUDE.md` that imports it:**
+
+    ```markdown
+    # CLAUDE.md
     @AGENTS.md
     ```
 
-    Or create a symlink: `ln -s AGENTS.md CLAUDE.md`
+    Claude Code reads `CLAUDE.md`, which pulls in everything from `AGENTS.md`. Codex CLI reads `AGENTS.md` directly. One source of truth, both tools get the same instructions.
 
-    This way, you maintain one file that works everywhere.
+    You can add Claude-specific instructions below the import line — they'll only be read by Claude Code.
+
+    !!! warning "Avoid symlinks on teams with Windows users"
+        `ln -s AGENTS.md CLAUDE.md` works on Mac/Linux but fails silently on Windows. Use the `@AGENTS.md` import instead — it works on all platforms and lets you add tool-specific instructions.
 
 ### Why you need one
 
@@ -62,14 +74,6 @@ This saves time and prevents repeated mistakes.
 
 ### Where to save it
 
-=== "Open Code"
-
-    | Location | Scope |
-    |----------|-------|
-    | `./AGENTS.md` | This project |
-    | `./code/AGENTS.md` | This task subfolder |
-    | `~/.config/opencode/AGENTS.md` | All your projects |
-
 === "Claude Code"
 
     | Location | Scope | Git? |
@@ -79,13 +83,21 @@ This saves time and prevents repeated mistakes.
     | `~/.claude/CLAUDE.md` | All your projects | No |
     | `./CLAUDE.local.md` | Personal overrides | No (gitignore it) |
 
-Both tools read these recursively — if you're working in `cleaning/survey_data/code/`, the agent picks up context files from that directory and all parent directories.
+=== "Codex CLI"
+
+    | Location | Scope |
+    |----------|-------|
+    | `./AGENTS.md` | This project |
+    | `./code/AGENTS.md` | This task subfolder |
+    | `~/.codex/AGENTS.md` | All your projects |
+
+Both tools read context files recursively — if you're working in `cleaning/survey_data/code/`, the agent picks up context files from that directory and all parent directories.
 
 ### Best practices
 
 **Keep it short.** Only include things the agent would get wrong without. For each line, ask: *"Would removing this cause a mistake?"* If not, cut it.
 
-**Update it at the end of each session.** Ask: *"Is there anything we learned that should go into AGENTS.md?"* Add useful learnings. This is how knowledge compounds.
+**Update it at the end of each session.** Ask: *"Is there anything we learned that should go into AGENTS.md?"* Add useful learnings to `AGENTS.md` (the shared file). This is how knowledge compounds — and both Claude Code and Codex CLI benefit.
 
 **Example:**
 
@@ -108,7 +120,7 @@ using Indonesian manufacturing census (1991-2000).
 ```
 
 !!! tip
-    Run `/init` to auto-generate a starter context file for your project. Both Claude Code and Open Code support this command.
+    Run `/init` to auto-generate a starter context file for your project. Both Claude Code and Codex CLI support this command.
 
 ---
 
@@ -120,7 +132,7 @@ Skills are markdown files containing specialist instructions for tasks you do re
 
 Think of them as saved prompts with superpowers — they can include detailed instructions, checklists, and even specify which tools the agent should use.
 
-The skill format (`SKILL.md` with YAML frontmatter) is an [open standard](https://agentskills.io/specification) that works across Claude Code, Open Code, GitHub Copilot, Cursor, and others.
+The skill format (`SKILL.md` with YAML frontmatter) is an [open standard](https://agentskills.io/specification) that works across Claude Code, Codex CLI, GitHub Copilot, Cursor, and others.
 
 ### Why they're useful
 
@@ -132,23 +144,30 @@ The skill format (`SKILL.md` with YAML frontmatter) is an [open standard](https:
 
 ### Where to save them
 
-=== "Open Code"
-
-    | Location | Scope |
-    |----------|-------|
-    | `.opencode/skills/<skill-name>/SKILL.md` | This project |
-    | `.agents/skills/<skill-name>/SKILL.md` | This project (alt) |
-    | `.claude/skills/<skill-name>/SKILL.md` | This project (Claude Code compat) |
-    | `~/.config/opencode/skills/<skill-name>/SKILL.md` | All projects |
-
-    Open Code searches all these paths, so skills written for Claude Code work automatically.
-
 === "Claude Code"
 
     | Location | Scope |
     |----------|-------|
     | `.claude/skills/<skill-name>/SKILL.md` | This project |
     | `~/.claude/skills/<skill-name>/SKILL.md` | All projects |
+
+=== "Codex CLI"
+
+    | Location | Scope |
+    |----------|-------|
+    | `.agents/skills/<skill-name>/SKILL.md` | This project |
+    | `~/.codex/skills/<skill-name>/SKILL.md` | All projects |
+
+Both tools use the same `SKILL.md` format (YAML frontmatter + markdown instructions). The only difference is the directory path.
+
+!!! tip "Skills that work in both tools"
+    Keep your `SKILL.md` files in `.claude/skills/` (Claude Code's default). To make them available in Codex CLI too, add a symlink at the repo root:
+
+    ```bash
+    ln -s .claude/skills .agents/skills
+    ```
+
+    Or simply copy the skills directory. The `SKILL.md` format is identical — no changes needed to the files themselves.
 
 ### Example: Running regressions
 
@@ -202,12 +221,13 @@ The agent analyzes your codebase with read-only access. It can read files, searc
     - Command: `/plan`
     - CLI: `claude --permission-mode plan`
 
-=== "Open Code"
+=== "Codex CLI"
 
-    - Press **Tab** to switch to the **plan** agent (read-only analysis)
-    - Press **Tab** again to switch back to the **build** agent (full access)
+    Codex explains its plan before executing by default. You control how much autonomy it has with approval modes:
 
-    Open Code has two built-in agents: `plan` (read-only) and `build` (full access). Switching between them is how you control what the agent can do.
+    - **Auto** (default) — reads and edits files within the working directory; asks before going outside scope
+    - **Read-only** — browses files but requires approval for any write or command
+    - **Full Access** — unrestricted (use only in trusted environments)
 
 ### The workflow
 
@@ -255,28 +275,6 @@ This catches mistakes the "author" agent might miss — like a second pair of ey
 
 For repeated review tasks, create custom agents:
 
-=== "Open Code"
-
-    Save in `.opencode/agents/` or `~/.config/opencode/agents/`:
-
-    ```markdown
-    # .opencode/agents/code-reviewer.md
-    ---
-    name: code-reviewer
-    description: Reviews code for correctness and conventions
-    tools: Read, Grep, Glob
-    ---
-
-    You are a code reviewer for an economics research project.
-    Check for:
-    - Logical correctness (do regressions match the spec?)
-    - Data handling (are merges correct? dropped observations?)
-    - Style (follows AGENTS.md conventions?)
-    - Reproducibility (relative paths? seeds set?)
-
-    Be specific. Reference line numbers. Suggest fixes.
-    ```
-
 === "Claude Code"
 
     Save in `.claude/agents/`:
@@ -299,6 +297,23 @@ For repeated review tasks, create custom agents:
 
     Be specific. Reference line numbers. Suggest fixes.
     ```
+
+=== "Codex CLI"
+
+    Add review instructions as a section in your `AGENTS.md`:
+
+    ```markdown
+    ## Code review checklist
+    When asked to review code, check for:
+    - Logical correctness (do regressions match the spec?)
+    - Data handling (are merges correct? dropped observations?)
+    - Style (follows AGENTS.md conventions?)
+    - Reproducibility (relative paths? seeds set?)
+
+    Be specific. Reference line numbers. Suggest fixes.
+    ```
+
+    Codex CLI reads `AGENTS.md` at the project root and `AGENTS.override.md` in subdirectories for folder-specific instructions.
 
 ---
 
@@ -372,23 +387,13 @@ Run these two commands inside a Claude Code session:
 
 That's it. You'll immediately have access to all the slash commands and agents.
 
-### Installing in Open Code
+### Installing in Codex CLI
 
-Use the cross-platform installer:
+The compound engineering plugin is designed for Claude Code. For Codex CLI users, you can adopt the same workflow patterns manually:
 
-```bash
-bunx @every-env/compound-plugin install compound-engineering --to opencode
-```
-
-This writes the plugin configuration to `~/.config/opencode/`. All agents, skills, and commands will be available the next time you launch Open Code.
-
-Alternatively, add it manually in your `opencode.json`:
-
-```json
-{
-  "plugin": ["@every-env/compound-plugin"]
-}
-```
+1. Use the plan → work → review → compound loop described above
+2. Add your project conventions and learnings to `AGENTS.md`
+3. Use Codex's built-in `/review` command to analyze diffs before committing
 
 ### What the review agents actually do
 
@@ -409,7 +414,10 @@ The plugin works best when your project follows this layout:
 
 ```
 project/
-├── AGENTS.md              # Agent instructions and patterns
+├── AGENTS.md              # Shared instructions (source of truth)
+├── CLAUDE.md              # Imports @AGENTS.md + Claude-specific config
+├── .claude/skills/        # Shared skills (SKILL.md format)
+├── .claude/agents/        # Claude Code sub-agents
 ├── docs/
 │   ├── brainstorms/       # Output from /workflows:brainstorm
 │   ├── plans/             # Output from /workflows:plan
@@ -470,7 +478,7 @@ Overleaf is great for collaborative LaTeX editing, but its interface doesn't sup
 
     (Find your Git URL in Overleaf: Menu → Git)
 
-2. **Edit with your agent.** Open the folder in VS Code or the Open Code desktop app. Now you have full access to skills, sub-agents, and all the features covered in this guide.
+2. **Edit with your agent.** Open the folder in VS Code with Claude Code or Codex CLI. Now you have full access to skills, sub-agents, and all the features covered in this guide.
 
 3. **Push back to Overleaf.** When done, commit and push:
 

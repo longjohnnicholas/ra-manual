@@ -30,7 +30,7 @@ mkdocs gh-deploy
 ```
 docs/
 ├── index.md               # Home page
-├── 01-setup.md            # VS Code + Claude Code installation
+├── 01-setup.md            # VS Code + Claude Code / Codex CLI setup
 ├── 02-why-claude-code.md  # Why use Claude Code for research
 ├── 03-workflow.md         # Core workflow: plan mode, CLAUDE.md, sub-agents
 ├── 04-code-principles.md  # Project organization & coding standards

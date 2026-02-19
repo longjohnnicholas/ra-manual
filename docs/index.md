@@ -80,7 +80,7 @@ A practical guide for research assistants on using AI tools.
 
     ---
 
-    Three options: Claude Code, Open Code + OpenRouter, or the Open Code desktop app.
+    Two options: Claude Code (Anthropic) or Codex CLI (OpenAI).
 
     [:octicons-arrow-right-24: Installation guide](01-setup.md)
 
@@ -96,7 +96,7 @@ A practical guide for research assistants on using AI tools.
 
     ---
 
-    AGENTS.md, skills, sub-agents, compound engineering — works across Claude Code, Open Code, and more.
+    AGENTS.md, skills, sub-agents, compound engineering — works across Claude Code, Codex CLI, and other AI coding agents.
 
     [:octicons-arrow-right-24: Learn more](03-workflow.md)
 

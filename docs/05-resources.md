@@ -21,7 +21,7 @@ These are repositories and tools built by economists, for economists.
 
 - [Compound Engineering: How Every Codes With Agents](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents) — the article that introduced the compound engineering framework: plan → execute → review → compound.
 - [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) — comprehensive guide to the methodology.
-- [Compound Engineering Plugin](https://github.com/EveryInc/compound-engineering-plugin) — open-source plugin with 29 agents, 22 commands, and 19 skills. Works with Claude Code and Open Code. See [installation instructions](03-workflow.md#installing-in-claude-code).
+- [Compound Engineering Plugin](https://github.com/EveryInc/compound-engineering-plugin) — open-source plugin with 29 agents, 22 commands, and 19 skills. Works with Claude Code. See [installation instructions](03-workflow.md#installing-in-claude-code).
 
 ## Guides and Tutorials
 
@@ -66,9 +66,9 @@ Common Claude Code commands you'll use frequently:
 
 ## Future Extensions
 
-This manual currently focuses on Claude Code with a paid Anthropic subscription. Planned additions include:
+This manual covers Claude Code and Codex CLI. Planned additions include:
 
-- **Free/open-source alternatives**: Instructions for using open-weight models (e.g., via Ollama or LM Studio) as a substitute when Claude access isn't available
+- **Free/open-source alternatives**: Instructions for using open-weight models (e.g., via Ollama or LM Studio) as a substitute when neither subscription is available
 - **Language-specific guides**: Dedicated pages for Stata, R, Python, and MATLAB workflows with Claude
 - **Advanced topics**: Custom MCP servers, CI/CD integration, automated testing pipelines
 - **Data security**: Guidelines for working with sensitive or restricted-use data alongside AI tools
