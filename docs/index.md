@@ -42,7 +42,7 @@ A practical guide for research assistants on using AI tools.
 
     ---
 
-    *Plan → Work → Assess → Compound.* After each task, ask "what could we do better?" and write learnings to `CLAUDE.md`. The AI gets smarter over time.
+    *Plan → Work → Assess → Compound.* After each task, ask "what could we do better?" and write learnings to `AGENTS.md`. The AI gets smarter over time.
 
 -   :material-account-multiple:{ .lg .middle } __Use sub-agents liberally__
 

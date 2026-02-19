@@ -4,6 +4,9 @@ One of the most powerful things about incorporating AI into your research workfl
 
 This is especially valuable in fieldwork, where the volume of reports, data checks, and communications can overwhelm even a well-organized team.
 
+!!! info "Claude Code only"
+    MCP connectors are currently available in Claude Code. Codex CLI does not yet support MCP. If you're using Codex CLI, you can skip this page.
+
 ## What Are MCP Connectors?
 
 MCP (Model Context Protocol) is a standard that lets Claude talk to external services. An MCP connector is a small bridge that gives Claude the ability to read your Google Drive files, search your Gmail, pull data from Google Sheets, and more — all from within Claude Code.

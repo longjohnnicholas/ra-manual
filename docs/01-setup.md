@@ -1,6 +1,6 @@
 # Setup
 
-<p style="font-size: 1.1rem; color: #000;">
+<p style="font-size: 1.1rem;">
 Install VS Code, pick your AI agent, and be coding in about 10 minutes.
 </p>
 

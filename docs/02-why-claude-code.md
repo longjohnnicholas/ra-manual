@@ -1,6 +1,6 @@
 # Why AI Coding Tools?
 
-*We use Claude Code as our primary example, but these concepts apply to ChatGPT with Code Interpreter, Cursor, GitHub Copilot, and similar tools.*
+*We use Claude Code as our primary example, but these concepts apply to Codex CLI, Cursor, GitHub Copilot, and similar tools.*
 
 The single most important thing to understand about modern AI coding tools is this: **they can see everything in your project folder**. This is what makes them fundamentally different from chatting with an AI in a browser window. When you open a folder in VS Code and start an AI assistant, it has full context — your scripts, your data dictionaries, your notes, everything.
 
