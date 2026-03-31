@@ -166,6 +166,40 @@ Post any of these as a comment on the Linear issue:
 
 ---
 
+## Keyboard Shortcuts
+
+Press **`?`** at any time to open Linear's full shortcut reference. These are the ones worth learning first:
+
+**Navigation**
+
+| Shortcut | Action |
+|----------|--------|
+| `⌘K` | Command menu — search anything, jump anywhere |
+| `G` then `I` | Go to Inbox |
+| `G` then `M` | Go to My Issues |
+| `G` then `P` | Go to Projects |
+| `J` / `K` | Move down / up in any list |
+
+**Issues**
+
+| Shortcut | Action |
+|----------|--------|
+| `C` | Create new issue |
+| `S` | Change status on selected issue |
+| `A` | Assign issue |
+| `P` | Set priority |
+| `Space` | Peek at issue without opening it |
+
+**Inbox**
+
+| Shortcut | Action |
+|----------|--------|
+| `E` | Mark notification as done |
+| `U` | Mark as read |
+| `Backspace` | Delete notification |
+
+---
+
 ## FAQ
 
 **The agent asked for a summary — where do I post it?**
