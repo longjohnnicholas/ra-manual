@@ -2,6 +2,10 @@
 
 Claude Code and Codex can do more than write code. With the right skills installed, you can tell them to run analysis in Stata or MATLAB, produce publication-quality figures, and write a research memo — all from a single prompt. You can type the instructions or speak them using Wispr.
 
+The Stata and MATLAB skills described below are effectively **AI research assistants**. They read your codebase, write and run scripts, produce figures, and deliver a fact-checked memo — the same workflow you'd walk a junior RA through, but completed in minutes.
+
+This isn't about replacing anyone. It's about giving everyone on the team their own research assistant. Without these skills, a PI supervises an RA — two people, one stream of output. If the PI also uses the skill, they can run their own diagnostics in parallel — now there are two streams. If the RA uses it too, the RA is producing at a higher rate as well. The productivity gains compound across the team: each person who adopts the skill multiplies their own output, and those multipliers stack. A three-person team where everyone uses the skill can produce like a team several times its size.
+
 ---
 
 ## What Are Skills?
@@ -79,7 +83,9 @@ Use log scale. Compare the baseline and counterfactual.
 
 **What it does:** Writes a polished research memo on any question using whatever tools fit the task — Stata, MATLAB, Python, R, or just reading existing code and data. Follows the same lab template. Fact-checks and reviews.
 
-**When to use:** You need a clean internal report — data analysis, model diagnostics, literature summary, back-of-envelope calculation, or comparing results across specifications.
+Unlike the Stata and MATLAB skills above, this one doesn't run new analysis by default — it's for when you want a memo that **synthesizes existing results**, summarizes literature, or works through a back-of-envelope calculation. Use the Stata or MATLAB skill when you need new code executed; use this one when the analysis is already done and you need a clean write-up.
+
+**When to use:** Synthesizing results from previous scripts, literature summaries, model diagnostics from existing output, comparing results across specifications, or any memo that doesn't require running new Stata/MATLAB code.
 
 **Example prompt:**
 
@@ -90,7 +96,7 @@ Summarize the estimation results from the last 3 debug scripts.
 Compare the wage elasticities across specifications.
 ```
 
-**Note:** This skill is language-agnostic. It doesn't require a specific MCP server, but benefits from having Stata or MATLAB MCP installed if the analysis needs to run code.
+**Note:** This skill is language-agnostic. It doesn't require a specific MCP server, but benefits from having Stata or MATLAB MCP installed if the analysis does need to run code.
 
 ---
 
