@@ -181,6 +181,34 @@ Post any of these as a comment on the Linear issue:
 
 ---
 
+## Linear in Slack
+
+The Linear Slack integration lets you create issues and track work without leaving Slack. The most useful thing: if a discussion in Slack surfaces a task, you can turn it directly into a Linear issue on the spot.
+
+### Creating an issue from a Slack message
+
+Hover over any Slack message, click the **⋯ More actions** menu, and select **Create Linear issue**. Fill in the title, assignee, project, and reviewer label — the message content pre-fills the description. A synced thread is created automatically, so replies in Slack appear on the Linear issue and vice versa.
+
+### Creating an issue with @Linear
+
+Mention `@Linear` in any channel and describe the task in plain English:
+
+```
+@Linear create an issue for cleaning the EZ shapefile and assign to Evely in the Lagos project
+```
+
+The agent reads the context and creates the issue. You can then open it in Linear to add the Reviewer label and any details.
+
+### /linear slash command
+
+Type `/linear` in any Slack channel to create a new issue directly, or `/linear search` to find an existing one.
+
+### Notifications
+
+You can get Linear notifications in Slack instead of (or alongside) email. Set this up in Linear under **Settings → Notifications → Slack**. You can also subscribe a specific Slack channel to a project's updates — useful for keeping the whole team aware of a project's progress.
+
+---
+
 ## Keyboard Shortcuts
 
 Press **`?`** at any time to open Linear's full shortcut reference. These are the ones worth learning first:
