@@ -54,6 +54,7 @@ nav:
   - Getting the Most from Agents: 03-workflow.md
   - Connected Tools: 06-connected-tools.md
   - Code Principles: 04-code-principles.md
+  - Task Management with Linear: 07-task-management.md
   - Resources: 05-resources.md
 
 markdown_extensions:
