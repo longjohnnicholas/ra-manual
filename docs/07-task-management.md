@@ -1,24 +1,22 @@
 # Task Management with Linear
 
-The lab tracks work in Linear. A **project** is a push of work with a clear goal — *Prepare materials for survey round 2*, *Develop and deploy HFC*. An **issue** is one task inside a project, assigned to one person. Move your issue's status when your work status changes — that's how the PI tracks progress without having to ask.
+The lab tracks work in Linear. A **project** is a push of work with a clear goal — like a **Trello list** — for example *Prepare materials for survey round 2* or *Develop and deploy HFC*. An **issue** is one task inside a project — like a **Trello card** — assigned to one person. Move your issue's status when your work status changes — that's how the PI tracks progress without having to ask.
 
 ---
 
 ## Getting into Linear
 
-Linear has a desktop app and a web app. **Use the desktop app** — it's faster and sends notifications you'll miss otherwise. Download it at [linear.app/download](https://linear.app/download). The web app at [linear.app](https://linear.app) works if you can't install anything.
+Linear has a desktop app and a web app. The desktop app is faster and sends better notifications — download it at [linear.app/download](https://linear.app/download). The web app at [linear.app](https://linear.app) works just as well if you can't install anything or are on slower internet.
 
 The PI will invite you via email. Once you're in, you'll see the lab's **teams** in the left sidebar — each research project has its own team. Click a team to see its issues. If you haven't received an invite, ask the PI.
-
-Linear is keyboard-first. Most actions have a shortcut — you'll pick these up fast.
 
 ---
 
 ## Finding Your Work
 
-Press **`G` then `M`** to go to **My Issues** — this shows everything assigned to you across all projects.
+**To see your issues:** click **My Issues** in the left sidebar — this shows everything assigned to you across all projects. You can also press **`G` then `M`** on the keyboard to jump there.
 
-To see issues where you are the **reviewer**, filter by label: open any team view, press `F` to add a filter, select **Label**, and choose your `Reviewer: [name]` label. This shows all issues waiting for your review.
+**To see issues where you are the reviewer:** click your team in the sidebar, then click the **Filter** button at the top of the issue list, select **Label**, and pick your `Reviewer: [name]` label. On the keyboard, press **`F`** to open the filter panel.
 
 ---
 
@@ -32,16 +30,28 @@ To see issues where you are the **reviewer**, filter by label: open any team vie
 
 **Issues** are the individual tasks inside a project. Each issue has one person doing it, a reviewer, a status, and a description explaining what needs to be done.
 
+If you've used Trello: **projects = lists, issues = cards.**
+
 ### Creating an issue
 
 Press **`C`** to create a new issue. Fill in:
 
 - **Title** — what the task is
 - **Assignee** — the person doing the work (`A` to set)
-- **Reviewer label** — add a label `Reviewer: name`, e.g. `Reviewer: ntsivanidis` (`L` to open labels). **The automated reviewer uses this to know who does the human review.** If you skip it, the agent will bounce the issue back.
-- **Project** — which project this belongs to (`⇧P` to set)
+- **Reviewer label** — add a label `Reviewer: name`, e.g. `Reviewer: ntsivanidis` (press `L` to open labels). **The automated reviewer uses this to know who does the human review.** If you skip it, the agent will bounce the issue back.
+- **Project** — which project this belongs to (press **Shift+P** to set)
 
-The issue description should have three sections: `## Objective`, `## Acceptance Criteria`, and `## Deliverable Links`. The PI usually fills in the first two when creating the task. If they're blank, write them yourself — the agent will bounce the issue if they're missing.
+Every issue description should have these five sections:
+
+| Section | What it contains | Who writes it |
+|---------|-----------------|--------------|
+| **`## Objective`** | One sentence: what should this work achieve? | PI |
+| **`## Deliverable Type`** | Kind of output — e.g. *GitHub commit*, *Google Doc*, *Stata output* | PI |
+| **`## Acceptance Criteria`** | Bullets: what does "done" look like? | PI |
+| **`## Context`** | Brief background — why this task, what it connects to | PI |
+| **`## Deliverable Links`** | URL to your GitHub PR, commit, or Google Doc | **You** — before submitting |
+
+The PI fills in the first four when creating the task. Your job is to add the Deliverable Link before submitting for review. If any PI sections are blank, fill them in yourself — the agent will bounce the issue if they're missing.
 
 ### Issue statuses
 
@@ -98,22 +108,22 @@ Three things before you change the status to Agent Review:
 
 ### 1. Fill in the issue description
 
-Make sure the description has these three sections:
-
-- **`## Objective`** — one sentence: what should this work achieve?
-- **`## Acceptance Criteria`** — bullets: what does "done" look like?
-- **`## Deliverable Links`** — the URL to your GitHub PR, commit, or Google Doc
-
-The PI usually writes the Objective and Acceptance Criteria when they create the task. Don't rewrite them — just add your Deliverable Link. If they're blank, fill them in yourself.
+Check that all five sections are present (see **Projects and Issues** above for what each should contain). Your main job here is to add the **Deliverable Link**. Don't rewrite the PI's sections — just fill them in if they're blank.
 
 ```
 ## Objective
 Clean the enumeration zone shapefile and produce a map for PI review.
 
+## Deliverable Type
+GitHub commit
+
 ## Acceptance Criteria
 - Shapefile loads cleanly in R and Stata
 - Map shows all EZs with district labels
 - README updated with data source and date
+
+## Context
+Needed before survey round 2 — the current shapefile has missing EZs in Ondo State.
 
 ## Deliverable Links
 https://github.com/org/lagos-danfo/commit/abc1234...
@@ -123,7 +133,7 @@ The link can be a GitHub commit URL, PR URL, or Google Doc URL.
 
 ### 2. Add a Reviewer label
 
-On the issue, find the **Labels** field (in the right-hand properties panel) and add a label in the format `Reviewer: name` — for example, `Reviewer: ntsivanidis`. If the label doesn't exist yet, create it from the labels panel.
+On the issue, find the **Labels** field on the right side of the issue and add a label in the format `Reviewer: name` — for example, `Reviewer: ntsivanidis`. If the label doesn't exist yet, you can create it from the same panel.
 
 ### 3. Post a Summary comment
 
@@ -190,7 +200,7 @@ Don't just post "Updated the document." The reviewer needs to know which issues 
 
 **After substantive PI feedback:** if the PI gave you real revisions — not just a quick approval note — go back through agent review after fixing them. The agent stops reviewing after 2 rounds by default, so first post `/reset-reviews` to restart the counter, then move the issue back to Agent Review. This ensures updated work gets a fresh agent check before the PI looks again.
 
-### Improving the agent
+### If the agent's feedback seems wrong
 
 **If the feedback seems off:** post `/flag-feedback` as a comment, followed by a short explanation of what was wrong:
 
@@ -205,7 +215,7 @@ If you just want to skip agent review without flagging a problem, use `/escalate
 
 ### Commands
 
-Post any of these as a comment on the issue:
+Type any of these into the comment box and hit submit — just like posting a regular comment:
 
 | Command | What it does |
 |---------|-------------|
@@ -242,7 +252,7 @@ Turn on Slack notifications — you'll catch review feedback faster than email. 
 
 ## Keyboard Shortcuts
 
-You don't need these on day one. Come back once you're comfortable with the basics.
+Linear is keyboard-first — most actions have a shortcut. You don't need these on day one, but they'll save you a lot of clicking once you're settled in.
 
 Press **`?`** at any time to open Linear's full shortcut reference. These are the ones worth learning first:
 
@@ -250,7 +260,7 @@ Press **`?`** at any time to open Linear's full shortcut reference. These are th
 
 | Shortcut | Action |
 |----------|--------|
-| `⌘K` | Command menu — search anything, jump anywhere |
+| `Cmd+K` / `Ctrl+K` | Command menu — search anything, jump anywhere |
 | `G` then `I` | Go to Inbox |
 | `G` then `M` | Go to My Issues |
 | `G` then `P` | Go to Projects |
