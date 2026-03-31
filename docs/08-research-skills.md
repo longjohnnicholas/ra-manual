@@ -1,22 +1,14 @@
 # Research Skills
 
-Claude Code and Codex can do more than write code. With the right skills installed, you can tell them to run analysis in Stata or MATLAB, produce publication-quality figures, and write a research memo — all from a single prompt. You can type the instructions or speak them using Wispr.
-
-The Stata and MATLAB skills described below are effectively **AI research assistants**. They read your codebase, write and run scripts, produce figures, and deliver a fact-checked memo — the same workflow you'd walk a junior RA through, but completed in minutes.
-
-This isn't about replacing anyone. It's about giving everyone on the team their own research assistant. Without these skills, a PI supervises an RA — two people, one stream of output. If the PI also uses the skill, they can run their own diagnostics in parallel — now there are two streams. If the RA uses it too, the RA is producing at a higher rate as well. The productivity gains compound across the team: each person who adopts the skill multiplies their own output, and those multipliers stack. A three-person team where everyone uses the skill can produce like a team several times its size.
+Claude Code can run Stata or MATLAB analysis, produce figures, and write a research memo from a single prompt. Describe what you want; the agent writes the script, runs it, and delivers a reviewed write-up. You can type the instructions or speak them using Wispr. Both the PI and RAs can use these skills — the more people on the team using them, the more the team's output grows.
 
 ---
 
-## What Are Skills?
+## Skills and MCP
 
-Skills are instruction files that teach Claude Code (or Codex) how to do a specific task end-to-end. You invoke them with a `/` prefix — for example, `/stata-research-assistant`. When you invoke a skill, the agent follows a structured workflow: it reads your code, writes a script, runs it, produces figures, writes a memo, fact-checks it, and reviews it — then delivers everything to you.
+**Skills** are instruction files that teach Claude Code how to do a task end-to-end. Invoke them with a `/` prefix — e.g., `/stata-research-assistant`. The agent handles the full pipeline: script, execution, figures, memo.
 
----
-
-## What Is MCP?
-
-MCP (Model Context Protocol) connects Claude Code to external software like Stata and MATLAB. Without MCP, Claude can write scripts but can't run them. With the Stata MCP server installed, Claude can execute `.do` files directly and read the output. Same for MATLAB. Think of MCP as plugging Claude into your analysis tools. You need to install an MCP server for each tool you want Claude to use — see **Installation** below.
+**MCP** (Model Context Protocol) connects Claude Code to Stata and MATLAB so it can run scripts, not just write them. You need one MCP server per tool — see **Installation** below.
 
 ---
 
@@ -24,41 +16,28 @@ MCP (Model Context Protocol) connects Claude Code to external software like Stat
 
 ### Stata Research Assistant
 
-**Invoke with:** `/stata-research-assistant`
+**Invoke:** `/stata-research-assistant`
 
-**What it does:** Runs a complete research workflow — writes a `.do` debug script, executes it via Stata, produces figures at 300 DPI, writes a research memo following the lab template, fact-checks every claim, and runs a reviewer sub-agent (up to 3 rounds). Delivers the script, figures, and memo.
-
-**When to use:** Investigating data patterns, running regressions, debugging Stata code, producing summary statistics or diagnostics.
-
-**Example prompt:**
+Writes a `.do` script, runs it via Stata, produces figures (300 DPI), and delivers a research memo. Use for any Stata-based analysis — regressions, data diagnostics, summary statistics.
 
 ```
 /stata-research-assistant
 
 Run a regression of log wages on education and experience using the
 HFC dataset. Show me the residual plot and a summary table.
-Save everything to a memo.
 ```
 
-**What you get:**
+**Output:** `.do` script in `code/agent_sandbox/`, figures in `reports/figures/`, memo in `reports/`.
 
-- A `.do` script in `code/agent_sandbox/`
-- Figures in `code/agent_sandbox/reports/figures/`
-- A self-contained research memo in `code/agent_sandbox/reports/`
-
-**Requires:** Stata installed + Stata MCP server (see Installation)
+**Requires:** Stata + Stata MCP server
 
 ---
 
 ### MATLAB Research Assistant
 
-**Invoke with:** `/matlab-research-assistant`
+**Invoke:** `/matlab-research-assistant`
 
-**What it does:** Same workflow structure as Stata — writes a `.m` debug script, runs it via MATLAB, produces publication-quality figures (with lab-standard font sizes, panel dimensions, and LaTeX labels), writes a memo, fact-checks, and reviews. The agent handles all figure formatting automatically.
-
-**When to use:** Investigating model behavior, debugging estimation, running counterfactuals, producing diagnostics.
-
-**Example prompt:**
+Same workflow as Stata but for `.m` scripts. Figures use lab-standard formatting (font sizes, panel dimensions, LaTeX labels) automatically. Use for model diagnostics, estimation debugging, counterfactuals.
 
 ```
 /matlab-research-assistant
@@ -67,27 +46,17 @@ Plot the estimated trade costs against distance for all country pairs.
 Use log scale. Compare the baseline and counterfactual.
 ```
 
-**What you get:**
+**Output:** `.m` script in the debug directory, figures in `output/figures/debug/`, memo alongside the script.
 
-- A `.m` script in the debug directory
-- Figures in `output/figures/debug/`
-- A research memo alongside the script
-
-**Requires:** MATLAB installed + MATLAB MCP server (see Installation)
+**Requires:** MATLAB + MATLAB MCP server
 
 ---
 
 ### Research Report Writer
 
-**Invoke with:** `/research-report`
+**Invoke:** `/research-report`
 
-**What it does:** Writes a polished research memo on any question using whatever tools fit the task — Stata, MATLAB, Python, R, or just reading existing code and data. Follows the same lab template. Fact-checks and reviews.
-
-Unlike the Stata and MATLAB skills above, this one doesn't run new analysis by default — it's for when you want a memo that **synthesizes existing results**, summarizes literature, or works through a back-of-envelope calculation. Use the Stata or MATLAB skill when you need new code executed; use this one when the analysis is already done and you need a clean write-up.
-
-**When to use:** Synthesizing results from previous scripts, literature summaries, model diagnostics from existing output, comparing results across specifications, or any memo that doesn't require running new Stata/MATLAB code.
-
-**Example prompt:**
+Writes a memo that **synthesizes existing results** — previous scripts, literature, back-of-envelope calculations. Unlike the skills above, it doesn't run new code by default. Use it when the analysis is done and you need a clean write-up.
 
 ```
 /research-report
@@ -96,24 +65,26 @@ Summarize the estimation results from the last 3 debug scripts.
 Compare the wage elasticities across specifications.
 ```
 
-**Note:** This skill is language-agnostic. It doesn't require a specific MCP server, but benefits from having Stata or MATLAB MCP installed if the analysis does need to run code.
+Can run code if Stata or MATLAB MCP is installed, but doesn't require it.
 
 ---
 
-### The Shared Template
+### Memo Quality
 
-All three skills follow the same research memo template. Every memo produced by these skills is:
+All three skills produce memos following the same lab template:
 
-- **Tight** — 1-2 pages, every section earned, no filler
+- **Tight** — 1-2 pages, no filler
 - **Self-contained** — every variable defined on first use
 - **Grounded** — every claim traceable to code output, a table cell, or a figure
-- **Reviewed** — a sub-agent reviews from an economics professor's perspective (up to 3 rounds)
+- **Reviewed** — a second pass checks the memo from an economics professor's perspective (up to 3 rounds)
 
-Output format is markdown by default. If the memo has more than 2 LaTeX equations, it automatically switches to a self-contained HTML file with proper math rendering.
+Default output is markdown. Switches to HTML when the memo has LaTeX equations.
 
 ---
 
 ## Installation
+
+These instructions are for macOS. If you're on Windows or Linux, paths will differ — ask the PI for help.
 
 ### 1. Clone the skills repo
 
@@ -121,26 +92,27 @@ Output format is markdown by default. If the memo has more than 2 LaTeX equation
 git clone https://github.com/longjohnnicholas/claude-skills.git ~/Git/claude-skills
 ```
 
-If the repo is private, ask the PI for access first.
+If the repo is private, ask the PI for access.
 
 ### 2. Install skills into Claude Code
+
+Run these commands in Terminal to create shortcuts so Claude Code can find each skill:
 
 ```bash
 cd ~/Git/claude-skills
 mkdir -p ~/.claude/skills
-for skill in */; do
-  base=$(basename "$skill")
-  ln -sfn "$(pwd)/$skill" ~/.claude/skills/$base
-done
+
+# Link each research skill individually
+ln -sfn "$(pwd)/stata-research-assistant" ~/.claude/skills/stata-research-assistant
+ln -sfn "$(pwd)/report-writing/matlab-research-assistant" ~/.claude/skills/matlab-research-assistant
+ln -sfn "$(pwd)/report-writing/research-report" ~/.claude/skills/research-report
 ```
 
-This creates symlinks so Claude Code can find the skills when you type `/skill-name`.
+After this, typing `/stata-research-assistant` in Claude Code will invoke the skill.
 
-### 3. Install the Stata MCP server
+### 3. Stata MCP server
 
-Skip this if you don't use Stata.
-
-Open the file `~/.claude.json` in a text editor. Under `"mcpServers"`, add:
+Skip if you don't use Stata. Open the file `~/.claude.json` in a text editor (it's in your home folder — `~` means home). Under `"mcpServers"`, add:
 
 ```json
 "stata-mcp": {
@@ -154,42 +126,41 @@ Open the file `~/.claude.json` in a text editor. Under `"mcpServers"`, add:
 }
 ```
 
-Change `STATA_PATH` to wherever Stata is installed on your machine. This requires Python 3.12 and `uvx` — if you don't have `uvx`, install it with `pip install uv`.
+Change `STATA_PATH` to wherever Stata is installed on your machine. Requires Python 3.12 and `uvx` — if you don't have `uvx`, run `pip install uv` in Terminal.
 
-### 4. Install the MATLAB MCP server
+### 4. MATLAB MCP server
 
-Skip this if you don't use MATLAB.
+Skip if you don't use MATLAB. Run in Terminal:
 
 ```bash
 claude mcp add matlab-mcp --scope user -- npx -y matlab-mcp
 ```
 
-This requires MATLAB installed with `matlab` on your PATH, and Node.js (for `npx`).
+Requires MATLAB on your PATH and Node.js (for `npx`).
 
 ### 5. Verify
 
-Restart Claude Code, then type `/mcp` to check that Stata and/or MATLAB tools appear in the list.
+Restart Claude Code. In a new conversation, type `/mcp` to check that `stata-mcp` and/or `matlab-mcp` appear in the server list.
 
-### Using with Codex
+### Codex
 
-The skills repo is built for Claude Code. To use skills with OpenAI's Codex CLI, the skill files may need format conversion. Check with the PI for current status on Codex compatibility.
+The skills repo is built for Claude Code. To use them with OpenAI's Codex CLI, the skill files may need format conversion — check with the PI.
 
 ---
 
 ## Using Wispr
 
-Wispr lets you speak your instructions instead of typing. Open Claude Code, start Wispr dictation, and describe what you want:
+Wispr lets you speak instructions instead of typing. Start Wispr dictation and describe what you want:
 
 > "Slash stata research assistant — investigate the outliers in the wage distribution and show me a histogram."
 
-The skill name is spoken as "slash" followed by the skill name. Wispr transcribes it and Claude Code picks up the `/` command.
+Say "slash" before the skill name. Wispr transcribes it and Claude Code picks up the command.
 
 ---
 
 ## Tips
 
-- **Be specific.** Name the variables, the dataset, and the output format you want. "Run a regression" is vague — "Regress log wages on education and experience using `hfc_clean.dta`, cluster by district" gives the agent what it needs.
-- **You don't need to know the code structure.** The agent reads the codebase to find the right files, data paths, and variable names.
-- **The agent asks clarifying questions** if your instructions are ambiguous — just answer them.
-- **If the memo isn't right, say what to fix.** The agent iterates with a reviewer for up to 3 rounds. You can also give it direct feedback: "The second figure should use log scale" or "Cut the background section."
-- **Check the output.** These skills produce good first drafts, but always verify the numbers, figures, and interpretation before sharing.
+- **Be specific.** "Run a regression" is vague. "Regress log wages on education and experience using `hfc_clean.dta`, cluster by district" gives the agent what it needs.
+- **You don't need to know the code structure.** The agent reads the codebase to find files, data paths, and variable names.
+- **If the memo isn't right, say what to fix.** Direct feedback works: "Use log scale on figure 2" or "Cut the background section."
+- **Verify before sharing.** The output is a first draft — check the numbers and interpretation.
