@@ -6,7 +6,9 @@ Your work lives in Linear as an issue. Move your card when your status changes �
 
 ## Getting into Linear
 
-Linear is a web app at [linear.app](https://linear.app). The PI will invite you via email when you join the lab. Once you're in, you'll see your projects in the left sidebar — one team per research project (Lagos, Ethiopia, etc.). Click your team to open the board.
+Linear has a desktop app (preferred — download at [linear.app/download](https://linear.app/download)) and a web app at [linear.app](https://linear.app). Use the desktop app if you can; it's faster and sends notifications. If you can't install it, the web app works fine.
+
+The PI will invite you via email when you join the lab. Once you're in, you'll see your projects in the left sidebar — one team per research project (Lagos, Ethiopia, etc.). Click your team to open the board.
 
 If you haven't received an invite, ask the PI to send one.
 
@@ -34,7 +36,7 @@ Move the card when your status changes. If your card sits in "Assigned" while yo
 
 ## The Review Timeline
 
-When you move a card to **Agent Review**, an automated AI reviewer reads your work and checks it against the objective and acceptance criteria on the card. Here's the full flow:
+To submit your work, change the card's status to **Agent Review** — click the status field and select it from the dropdown. An automated AI reviewer will then read your work and check it against the objective and acceptance criteria on the card. Here's the full flow:
 
 ```
 In Progress
@@ -124,9 +126,11 @@ Passes → card moves to Human Review automatically. Needs revision → card mov
 
 ---
 
-## Responding to Agent Feedback
+## Responding to Feedback
 
-When the verdict is "Needs revision", fix the blocking issues. Then post a comment **quoting each `[Blocking]` item** with what you changed:
+The same approach applies whether the feedback is from the agent or from the PI.
+
+Fix the issues, then post a comment **quoting each piece of feedback** with what you changed:
 
 ```
 > [Blocking] The timeline is not clear end-to-end.
@@ -139,11 +143,13 @@ survey order and dependencies.
 Fixed. Each survey section now states its prerequisites explicitly.
 ```
 
-Don't just post "Updated the document." The agent and the PI need to know which issues you addressed and how.
+Don't just post "Updated the document." The reviewer needs to know which issues you addressed and how.
 
-After posting, move the card back to Agent Review — or post `/review` as a comment to trigger it without moving the card.
+**After agent feedback:** post your response and move the card back to Agent Review — or post `/review` as a comment to trigger it without moving the card. `[Suggestion]` items are optional. Skip them if you want.
 
-`[Suggestion]` items are optional. Skip them if you want.
+**After substantive human (PI) feedback:** if the PI gave you real revisions to make — not just a quick approval note — go back through agent review after fixing them. First post `/reset-reviews` to restart the 2-round counter, then move the card back to Agent Review. This ensures the updated work gets a fresh agent check before the PI looks again.
+
+**If the feedback seems wrong:** post `/escalate` to skip to Human Review and leave a comment explaining why you think the feedback missed the mark. This helps the PI calibrate and improve the agent's instructions over time.
 
 ---
 
