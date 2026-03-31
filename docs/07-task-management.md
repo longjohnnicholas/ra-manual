@@ -1,6 +1,6 @@
 # Task Management with Linear
 
-Your work lives in Linear as an issue. Move your card when your status changes — that's how the PI tracks progress without having to ask.
+Work in the lab is organised into **projects** and **issues**. Move your issue's status when your work status changes — that's how the PI tracks progress without having to ask.
 
 ---
 
@@ -8,17 +8,32 @@ Your work lives in Linear as an issue. Move your card when your status changes �
 
 Linear has a desktop app (preferred — download at [linear.app/download](https://linear.app/download)) and a web app at [linear.app](https://linear.app). Use the desktop app if you can; it's faster and sends notifications. If you can't install it, the web app works fine.
 
-The PI will invite you via email when you join the lab. Once you're in, you'll see your projects in the left sidebar — one team per research project (Lagos, Ethiopia, etc.). Click your team to open the board.
-
-If you haven't received an invite, ask the PI to send one.
+The PI will invite you via email when you join the lab. Once you're in, you'll see the lab's teams and projects in the left sidebar. If you haven't received an invite, ask the PI to send one.
 
 ---
 
-## The Board
+## Projects and Issues
 
-The board is a set of columns. Each column is a **status**. Each card is an **issue** — one task, assigned to one person.
+**Projects** are pushes of work — a defined effort with a clear goal and end date. Think of them like Trello lists. Examples:
 
-Move a card by clicking its status and selecting a new one from the dropdown, or drag it to a different column.
+- *Prepare materials for survey round 2*
+- *Develop and deploy HFC*
+- *Clean enumeration zone data*
+
+**Issues** are the individual tasks inside a project. Each issue has one person doing it, a reviewer, a status, and a description explaining what needs to be done.
+
+### Creating an issue
+
+Press **`C`** to create a new issue. Fill in:
+
+- **Title** — what the task is
+- **Assignee** — the person doing the work (`A` to set)
+- **Reviewer label** — add a label `Reviewer: name` (e.g. `Reviewer: ntsivanidis`) so the automated reviewer and the PI know who does the human review
+- **Project** — which project this belongs to (`⇧P` to set)
+
+### Issue statuses
+
+Each issue has a status showing where it is in the workflow. Change it by clicking the status field and selecting from the dropdown.
 
 | Status | What it means | When to move here |
 |--------|--------------|-------------------|
@@ -30,7 +45,7 @@ Move a card by clicking its status and selecting a new one from the dropdown, or
 | **Human Review** | Agent approved, PI is reviewing | Moved automatically |
 | **Done** | Work accepted | Moved by PI |
 
-Move the card when your status changes. If your card sits in "Assigned" while you're two days in, the PI has no visibility.
+Move the issue when your status changes. If it sits in "Assigned" while you're two days in, the PI has no visibility.
 
 ---
 
